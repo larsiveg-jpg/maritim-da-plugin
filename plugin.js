@@ -9,7 +9,7 @@
  * Struktur og navngiving: Designsystemet (semantiske tokens, komponent-tokens)
  */
 
-const VERSJON = '0.2.0';
+const VERSJON = '0.3.0';
 
 // ================================================================== tokens
 // Komponent-tokens (Designsystemets tredje lag). Opprettes automatisk i settet
@@ -49,6 +49,85 @@ const KOMPONENT_TOKENS = [
   ["banner.badge-size", "sizing", "{ob.size.visual-target-min}"],
   ["banner.icon-size", "sizing", "{ob.size.icon-size-regular}"],
   ["banner.border-radius", "borderRadius", "{ob.border-radius.6}"],
+  ["tag.height", "sizing", "{ob.component.tag-visual-target}"],
+  ["tag.height-large", "sizing", "{ob.component.tag-visual-target-large}"],
+  ["tag.padding-inline", "spacing", "{ob.component.tag-padding-horizontal}"],
+  ["tag.padding-inline-large", "spacing", "{ob.component.tag-padding-horizontal-large}"],
+  ["tag.gap", "spacing", "{ob.component.tag-label-spacing}"],
+  ["tag.icon-size", "sizing", "{ob.component.tag-icon-size}"],
+  ["tag.icon-size-large", "sizing", "{ob.component.tag-icon-size-large}"],
+  ["tag.border-radius", "borderRadius", "{ob.component.tag-border-radius}"],
+  ["badge.padding", "spacing", "{ob.component.badge-padding}"],
+  ["badge.border-radius", "borderRadius", "{ob.component.badge-border-radius}"],
+  ["badge.min-size-large", "sizing", "{ob.component.badge-min-size-large}"],
+  ["status.height", "sizing", "{ob.size.touch-target-min}"],
+  ["status.padding", "spacing", "8px"],
+  ["status.gap", "spacing", "4px"],
+  ["status.indicator-width", "sizing", "16px"],
+  ["status.indicator-height", "sizing", "8px"],
+  ["status.indicator-radius", "borderRadius", "{ob.border-radius.2}"],
+  ["tooltip.height", "sizing", "{ob.component.tooltip-size}"],
+  ["tooltip.padding-inline", "spacing", "{ob.component.tooltip-padding-horizontal}"],
+  ["tooltip.label-padding", "spacing", "{ob.component.tooltip-label-spacing}"],
+  ["tooltip.icon-size", "sizing", "{ob.component.tooltip-icon-size}"],
+  ["tooltip.border-radius", "borderRadius", "{ob.component.tooltip-border-radius}"],
+  ["tab.height", "sizing", "{ob.component.tab-item-touch-target-size}"],
+  ["tab.padding-inline", "spacing", "{ob.component.tab-item-padding-horizontal}"],
+  ["tab.gap", "spacing", "{ob.component.tab-item-label-spacing}"],
+  ["tab.icon-size", "sizing", "{ob.component.tab-item-icon-size}"],
+  ["segment.height", "sizing", "{ob.component.toggle-button-toggle-button-item-touch-target-size}"],
+  ["segment.visual-height", "sizing", "{ob.component.toggle-button-toggle-button-item-visual-size}"],
+  ["segment.padding-inline", "spacing", "{ob.component.toggle-button-toggle-button-item-padding-horizontal}"],
+  ["segment.label-padding", "spacing", "{ob.component.toggle-button-toggle-button-item-label-spacing}"],
+  ["segment.border-radius", "borderRadius", "{ob.component.toggle-button-toggle-button-item-border-radius}"],
+  ["nav.height", "sizing", "{ob.component.navigation-item-touch-target-size}"],
+  ["nav.padding-inline", "spacing", "{ob.component.navigation-item-padding-horizontal}"],
+  ["nav.gap", "spacing", "{ob.component.navigation-item-label-spacing}"],
+  ["nav.icon-size", "sizing", "{ob.component.navigation-item-icon-size}"],
+  ["nav.border-radius", "borderRadius", "{ob.component.navigation-item-border-radius}"],
+  ["card.padding", "spacing", "{ob.component.card-padding}"],
+  ["card.gap", "spacing", "{ob.component.card-gap}"],
+  ["card.border-radius", "borderRadius", "{ob.component.card-border-radius-regular}"],
+  ["card.heading-height", "sizing", "{ob.component.card-heading-container-height}"],
+  ["card.icon-size", "sizing", "{ob.component.card-leading-icon-size}"],
+  ["color.status.active.fill", "color", "{ob.base.blue-500}"],
+  ["color.status.active.border", "color", "{ob.base.blue-600}"],
+  ["color.tag.blue.text", "color", "{ob.base.blue-600}"],
+  ["color.tag.blue.background", "color", "{ob.base.blue-050}"],
+  ["color.tag.blue.border", "color", "{ob.base.blue-100}"],
+  ["color.tag.blue.icon", "color", "{ob.base.blue-500}"],
+  ["color.tag.cyan.text", "color", "{ob.base.cyan-600}"],
+  ["color.tag.cyan.background", "color", "{ob.base.cyan-050}"],
+  ["color.tag.cyan.border", "color", "{ob.base.cyan-100}"],
+  ["color.tag.cyan.icon", "color", "{ob.base.cyan-500}"],
+  ["color.tag.teal.text", "color", "{ob.base.teal-600}"],
+  ["color.tag.teal.background", "color", "{ob.base.teal-050}"],
+  ["color.tag.teal.border", "color", "{ob.base.teal-100}"],
+  ["color.tag.teal.icon", "color", "{ob.base.teal-500}"],
+  ["color.tag.green.text", "color", "{ob.base.mint-600}"],
+  ["color.tag.green.background", "color", "{ob.base.mint-050}"],
+  ["color.tag.green.border", "color", "{ob.base.mint-100}"],
+  ["color.tag.green.icon", "color", "{ob.base.mint-500}"],
+  ["color.tag.yellow.text", "color", "{ob.base.yellow-600}"],
+  ["color.tag.yellow.background", "color", "{ob.base.yellow-050}"],
+  ["color.tag.yellow.border", "color", "{ob.base.yellow-100}"],
+  ["color.tag.yellow.icon", "color", "{ob.base.yellow-500}"],
+  ["color.tag.orange.text", "color", "{ob.base.orange-600}"],
+  ["color.tag.orange.background", "color", "{ob.base.orange-050}"],
+  ["color.tag.orange.border", "color", "{ob.base.orange-100}"],
+  ["color.tag.orange.icon", "color", "{ob.base.orange-500}"],
+  ["color.tag.red.text", "color", "{ob.base.red-600}"],
+  ["color.tag.red.background", "color", "{ob.base.red-050}"],
+  ["color.tag.red.border", "color", "{ob.base.red-100}"],
+  ["color.tag.red.icon", "color", "{ob.base.red-500}"],
+  ["color.tag.purple.text", "color", "{ob.base.purple-600}"],
+  ["color.tag.purple.background", "color", "{ob.base.purple-050}"],
+  ["color.tag.purple.border", "color", "{ob.base.purple-100}"],
+  ["color.tag.purple.icon", "color", "{ob.base.purple-500}"],
+  ["color.tag.indigo.text", "color", "{ob.base.indigo-600}"],
+  ["color.tag.indigo.background", "color", "{ob.base.indigo-050}"],
+  ["color.tag.indigo.border", "color", "{ob.base.indigo-100}"],
+  ["color.tag.indigo.icon", "color", "{ob.base.indigo-500}"],
   ["color.neutral.text-disabled", "color", "{ob.element.disabled}"],
   ["color.neutral.text-placeholder", "color", "{ob.element.inactive}"],
   ["color.neutral.symbol", "color", "{ob.element.symbol}"],
@@ -62,6 +141,10 @@ const IKON = {
   hake: 'M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L21 7.5l-1.4-1.4z',
   strek: 'M6 11h12v2H6z',
   utrop: 'M11 5h2v9h-2zm0 11h2v2h-2z',
+  info: 'M11 10h2v8h-2zm0-4h2v2h-2z',
+  hjem: 'M12 4 3 11h2v8h5v-5h4v5h5v-8h2z',
+  merkelapp: 'M3 5v6l9 9 7-7-9-9H4zm4 1.5A1.5 1.5 0 1 1 7 9.5a1.5 1.5 0 0 1 0-3z',
+  pil: 'M0 0h12L6 6z',
 };
 const svg = (d) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="${d}" fill="#000000"/></svg>`;
 
@@ -536,6 +619,301 @@ function byggAlarmbanner(V, kat, navn, kvittert) {
   const tid = V.tekst('12:04', 'typography.ui.label', 'color.neutral.text-subtle', 'Tid');
   if (tid) V.leggTil(banner, tid);
   return banner;
+}
+
+// ------------------------------------------------------------------ runde 3
+const TAG_FARGER = [
+  ['gray', 'Grå'], ['blue', 'Blå'], ['cyan', 'Cyan'], ['teal', 'Blågrønn'], ['green', 'Grønn'],
+  ['yellow', 'Gul'], ['orange', 'Oransje'], ['red', 'Rød'], ['purple', 'Lilla'], ['indigo', 'Indigo'],
+];
+// OpenBridge badge-typer → [navn, bakgrunn, kant, tekst]
+const TELLER_TYPER = [
+  ['regular', 'Vanlig', 'color.control.normal.enabled-background', 'color.control.normal.enabled-border', 'color.control.normal.on-neutral'],
+  ['critical', 'Kritisk', 'color.control.critical.enabled-background', 'color.control.critical.enabled-border', 'color.on.critical'],
+  ['alarm', 'Alarm', 'color.alert.alarm', 'color.alert.alarm-outline', 'color.on.alarm'],
+  ['warning', 'Advarsel', 'color.alert.warning', 'color.alert.warning-outline', 'color.on.warning'],
+  ['caution', 'Forsiktighet', 'color.alert.caution', 'color.alert.caution-outline', 'color.on.caution'],
+  ['diagnostic', 'Diagnostikk', 'color.control.notification.enabled-background', 'color.control.notification.enabled-border', 'color.control.notification.on-active'],
+  ['running', 'Kjører', 'color.alert.running', 'color.alert.running', 'color.on.running'],
+  // Avvik: OpenBridge bruker on-selected-active, som har samme farge som bakgrunnen i natt-paletten
+  ['notification', 'Varsel', 'color.instrument.enhanced-primary', 'color.instrument.enhanced-primary', 'color.neutral.background-default'],
+];
+// OpenBridge status-indicator → [navn, fyll, kant]
+const STATUS_TYPER = [
+  ['active', 'Aktiv', 'color.status.active.fill', 'color.status.active.border'],
+  ['inactive', 'Inaktiv', 'color.neutral.text-disabled', 'color.neutral.text-placeholder'],
+  ['running', 'Kjører', 'color.alert.running', 'color.alert.running-outline'],
+  ['caution', 'Forsiktighet', 'color.alert.caution', 'color.alert.caution-outline'],
+  ['warning', 'Advarsel', 'color.alert.warning', 'color.alert.warning-outline'],
+  ['alarm', 'Alarm', 'color.alert.alarm', 'color.alert.alarm-outline'],
+];
+// OpenBridge tooltip-typer → [navn, bakgrunn, tekst, ikon]
+const TIPS_TYPER = [
+  ['normal', 'Normal', 'color.neutral.background-default', 'color.control.normal.on-active', 'color.control.normal.on-neutral'],
+  ['raised', 'Raised', 'color.control.raised.enabled-background', 'color.control.raised.on-active', 'color.control.raised.on-neutral'],
+  // Avvik: OpenBridge sin on-selected-active gir 1,4:1 kontrast her i natt-paletten
+  ['enhanced', 'Forsterket', 'color.instrument.enhanced-secondary', 'color.neutral.background-default', 'color.neutral.background-default'],
+  ['caution', 'Forsiktighet', 'color.alert.caution', 'color.on.caution', 'color.on.caution'],
+  ['warning', 'Advarsel', 'color.alert.warning', 'color.on.warning', 'color.on.warning'],
+  ['alarm', 'Alarm', 'color.alert.alarm', 'color.on.alarm', 'color.on.alarm'],
+];
+const VALGT = [['nei', 'Nei'], ['ja', 'Ja']];
+
+Object.assign(KOMPONENTER, {
+  tag: {
+    navn: 'Tag',
+    egenskaper: ['Farge', 'Størrelse', 'Ikon'],
+    kombinasjoner() {
+      const ut = [];
+      let rad = 0;
+      for (const [str, strNavn] of [['regular', 'Regular'], ['large', 'Large']]) {
+        for (const [ik, ikNavn] of [['nei', 'Uten'], ['ja', 'Med']]) {
+          TAG_FARGER.forEach(([f, fNavn], kol) => {
+            ut.push({ verdier: [fNavn, strNavn, ikNavn], rad, kol, bygg: (V) => byggTag(V, f, str === 'large', ik === 'ja') });
+          });
+          rad++;
+        }
+      }
+      return ut;
+    },
+    kolonne: 110,
+    radhoyde: 56,
+  },
+  teller: {
+    navn: 'Teller',
+    egenskaper: ['Type', 'Størrelse'],
+    kombinasjoner() {
+      const ut = [];
+      [['regular', 'Regular'], ['large', 'Large']].forEach(([str, strNavn], rad) => {
+        TELLER_TYPER.forEach(([type, tNavn], kol) => {
+          ut.push({ verdier: [tNavn, strNavn], rad, kol, bygg: (V) => byggTeller(V, type, str === 'large') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 70,
+    radhoyde: 56,
+  },
+  statusindikator: {
+    navn: 'Statusindikator',
+    egenskaper: ['Status'],
+    kombinasjoner() {
+      return STATUS_TYPER.map(([type, navn], kol) => ({ verdier: [navn], rad: 0, kol, bygg: (V) => byggStatus(V, type) }));
+    },
+    kolonne: 160,
+  },
+  verktoytips: {
+    navn: 'Verktøytips',
+    egenskaper: ['Type', 'Innhold'],
+    kombinasjoner() {
+      const ut = [];
+      [['tekst', 'Tekst'], ['ikon', 'Ikon og tekst']].forEach(([inn, innNavn], rad) => {
+        TIPS_TYPER.forEach(([type, tNavn], kol) => {
+          ut.push({ verdier: [tNavn, innNavn], rad, kol, bygg: (V) => byggTips(V, type, inn === 'ikon') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 180,
+    radhoyde: 72,
+  },
+  fane: {
+    navn: 'Fane',
+    egenskaper: ['Valgt', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      VALGT.forEach(([v, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggFane(V, v === 'ja', t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 200,
+    radhoyde: 72,
+  },
+  segment: {
+    navn: 'Segmentvalg',
+    egenskaper: ['Valgt', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      VALGT.forEach(([v, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggSegment(V, v === 'ja', t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 140,
+  },
+  navigasjon: {
+    navn: 'Navigasjonselement',
+    egenskaper: ['Valgt', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      VALGT.forEach(([v, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggNavigasjon(V, v === 'ja', t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 280,
+  },
+  kort: {
+    navn: 'Kort',
+    egenskaper: ['Tittel'],
+    kombinasjoner() {
+      return [['ja', 'Med'], ['nei', 'Uten']].map(([t, tNavn], kol) => ({ verdier: [tNavn], rad: 0, kol, bygg: (V) => byggKort(V, t === 'ja') }));
+    },
+    kolonne: 360,
+  },
+});
+
+function byggTag(V, farge, stor, medIkon) {
+  const C = farge === 'gray' ? null : `color.tag.${farge}`;
+  const tekstFarge = C ? `${C}.text` : 'color.control.indent.on-active';
+  const tag = V.boks('Tag', { b: 64, h: 24, sizingV: 'fix' });
+  V.bind(tag, stor ? 'tag.height-large' : 'tag.height', ['height']);
+  V.bind(tag, stor ? 'tag.padding-inline-large' : 'tag.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.bind(tag, 'tag.gap', ['columnGap']);
+  V.flate(tag, {
+    fyll: C ? `${C}.background` : 'color.control.indent.enabled-background',
+    kant: C ? `${C}.border` : 'color.control.indent.enabled-border',
+    kantbredde: 'border-width.default',
+    radius: 'tag.border-radius',
+  });
+  if (medIkon) V.leggTil(tag, V.ikon('Ikon', IKON.merkelapp, stor ? 'tag.icon-size-large' : 'tag.icon-size', C ? `${C}.icon` : 'color.control.indent.on-neutral'));
+  const t = V.tekst('Tag', stor ? 'typography.ui.body' : 'typography.ui.label', tekstFarge, 'Etikett');
+  if (t) V.leggTil(tag, t);
+  return tag;
+}
+
+function byggTeller(V, type, stor) {
+  const [, , fyll, kant, tekst] = TELLER_TYPER.find(([t]) => t === type);
+  const teller = V.boks('Teller', { b: 20, h: 20 });
+  V.bind(teller, 'badge.padding', ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom']);
+  if (stor) V.bind(teller, 'badge.min-size-large', ['height']);
+  V.flate(teller, { fyll, kant, kantbredde: 'border-width.default', radius: 'badge.border-radius' });
+  const t = V.tekst('3', stor ? 'typography.ui.body-active' : 'typography.ui.label-active', tekst, 'Antall');
+  if (t) V.leggTil(teller, t);
+  return teller;
+}
+
+function byggStatus(V, type) {
+  const [, navn, fyll, kant] = STATUS_TYPER.find(([t]) => t === type);
+  const status = V.boks('Statusindikator', { b: 120, h: 48, sizingV: 'fix', justify: 'start' });
+  V.bind(status, 'status.height', ['height']);
+  V.bind(status, 'status.padding', ['paddingLeft', 'paddingRight']);
+  V.bind(status, 'status.gap', ['columnGap']);
+  const ramme = V.boks('Indikator', { b: 24, h: 24, sizingH: 'fix', sizingV: 'fix' });
+  const lampe = V.boks('Lampe', { b: 16, h: 8, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.bind(lampe, 'status.indicator-width', ['width']);
+  V.bind(lampe, 'status.indicator-height', ['height']);
+  V.flate(lampe, { fyll, kant, kantbredde: 'border-width.default', radius: 'status.indicator-radius' });
+  V.leggTil(ramme, lampe);
+  V.leggTil(status, ramme);
+  const inaktiv = type === 'inactive';
+  const t = V.tekst(navn, inaktiv ? 'typography.ui.body' : 'typography.ui.button', inaktiv ? 'color.neutral.text-subtle' : 'color.neutral.text-default', 'Etikett');
+  if (t) V.leggTil(status, t);
+  return status;
+}
+
+function byggTips(V, type, medIkon) {
+  const [, , fyll, tekst, ikonFarge] = TIPS_TYPER.find(([t]) => t === type);
+  const tips = V.boks('Verktøytips', { dir: 'column', b: 120, h: 40 });
+  const boble = V.boks('Boble', { b: 120, h: 32, sizingV: 'fix' });
+  V.bind(boble, 'tooltip.height', ['height']);
+  V.bind(boble, 'tooltip.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(boble, { fyll, radius: 'tooltip.border-radius' });
+  if (medIkon) V.leggTil(boble, V.ikon('Ikon', IKON.info, 'tooltip.icon-size', ikonFarge));
+  const etikett = V.boks('Etikett', { b: 40, h: 24 });
+  V.bind(etikett, 'tooltip.label-padding', ['paddingLeft', 'paddingRight']);
+  const t = V.tekst('Hjelpetekst', 'typography.ui.button', tekst);
+  if (t) V.leggTil(etikett, t);
+  V.leggTil(boble, etikett);
+  V.leggTil(tips, boble);
+  // Pil under boblen (OpenBridge .bottom-arrow, 12 × 6)
+  const pil = penpot.createShapeFromSvg('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path d="' + IKON.pil + '" fill="#000000"/></svg>');
+  if (pil) {
+    pil.name = 'Pil';
+    V.leggTil(tips, pil);
+    for (const s of pil.children?.length ? pil.children : [pil]) V.bind(s, fyll, ['fill']);
+  }
+  return tips;
+}
+
+function byggFane(V, valgt, t) {
+  const deaktivert = t === 'disabled';
+  const fane = V.boks('Fane', { b: 160, h: 48, sizingV: 'fix' });
+  V.bind(fane, 'tab.height', ['height']);
+  V.bind(fane, 'tab.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.bind(fane, 'tab.gap', ['columnGap']);
+  // OpenBridge: valgt fane får container-global-flate og skillelinjer
+  if (valgt && !deaktivert && t !== 'focused') {
+    V.flate(fane, { fyll: 'color.neutral.surface-default', kant: 'color.neutral.border-subtle', kantbredde: 'border-width.default' });
+  } else {
+    V.flate(fane, { fyll: `color.control.flat.${t}-background`, kant: `color.control.flat.${t}-border`, fokus: t === 'focused' });
+  }
+  V.leggTil(fane, V.ikon('Ikon', IKON.meny, 'tab.icon-size', deaktivert ? 'color.control.flat.on-disabled' : 'color.control.flat.on-neutral'));
+  const tx = V.tekst('Fane', valgt ? 'typography.ui.body-active' : 'typography.ui.body', deaktivert ? 'color.control.flat.on-disabled' : 'color.control.flat.on-active', 'Tittel');
+  if (tx) V.leggTil(fane, tx);
+  return fane;
+}
+
+function byggSegment(V, valgt, t) {
+  const S = `color.control.${valgt ? 'selected' : 'flat'}`;
+  const deaktivert = t === 'disabled';
+  const wrapper = V.boks('Segmentvalg', { b: 96, h: 48, sizingV: 'fix' });
+  V.bind(wrapper, 'segment.height', ['height']);
+  const flate = V.boks('Flate', { b: 80, h: 32, sizingV: 'fix' });
+  V.bind(flate, 'segment.visual-height', ['height']);
+  V.bind(flate, 'segment.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(flate, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'segment.border-radius', fokus: t === 'focused' });
+  const etikett = V.boks('Etikett', { b: 40, h: 24 });
+  V.bind(etikett, 'segment.label-padding', ['paddingLeft', 'paddingRight']);
+  const tx = V.tekst('Valg', valgt ? 'typography.ui.body-active' : 'typography.ui.body', `${S}.${deaktivert ? 'on-disabled' : 'on-active'}`);
+  if (tx) V.leggTil(etikett, tx);
+  V.leggTil(flate, etikett);
+  V.leggTil(wrapper, flate);
+  return wrapper;
+}
+
+function byggNavigasjon(V, valgt, t) {
+  // OpenBridge: vanlig = flat, valgt (checked) = amplified
+  const S = `color.control.${valgt ? 'amplified' : 'flat'}`;
+  const deaktivert = t === 'disabled';
+  const element = V.boks('Navigasjonselement', { b: 240, h: 48, sizingH: 'fix', sizingV: 'fix', justify: 'start' });
+  V.bind(element, 'nav.height', ['height']);
+  V.bind(element, 'nav.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.bind(element, 'nav.gap', ['columnGap']);
+  V.flate(element, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'nav.border-radius', fokus: t === 'focused' });
+  V.leggTil(element, V.ikon('Ikon', IKON.hjem, 'nav.icon-size', `${S}.${deaktivert ? 'on-disabled' : 'on-neutral'}`));
+  const tx = V.tekst('Oversikt', 'typography.ui.body', `${S}.${deaktivert ? 'on-disabled' : 'on-active'}`, 'Etikett');
+  if (tx) V.leggTil(element, tx);
+  return element;
+}
+
+function byggKort(V, medTittel) {
+  const kort = V.boks('Kort', { dir: 'column', b: 320, h: 160, sizingH: 'fix', align: 'start', justify: 'start' });
+  V.bind(kort, 'card.padding', ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom']);
+  V.bind(kort, 'card.gap', ['rowGap']);
+  V.flate(kort, { fyll: 'color.neutral.background-default', kant: 'color.neutral.border-default', kantbredde: 'border-width.default', radius: 'card.border-radius' });
+  if (medTittel) {
+    const topp = V.boks('Tittel', { b: 200, h: 32, sizingV: 'fix', justify: 'start' });
+    V.bind(topp, 'card.heading-height', ['height']);
+    V.bind(topp, 'card.gap', ['columnGap']);
+    V.leggTil(topp, V.ikon('Ikon', IKON.info, 'card.icon-size', 'color.neutral.text-subtle'));
+    const tx = V.tekst('TITTEL', 'typography.ui.overline', 'color.neutral.text-subtle');
+    if (tx) V.leggTil(topp, tx);
+    V.leggTil(kort, topp);
+  }
+  const innhold = V.boks('Innhold', { b: 300, h: 96, sizingH: 'fix', sizingV: 'fix' });
+  const tx = V.tekst('Innhold', 'typography.ui.body', 'color.neutral.text-subtle', 'Plassholder');
+  if (tx) V.leggTil(innhold, tx);
+  V.leggTil(kort, innhold);
+  V.fyllBredde(innhold);
+  return kort;
 }
 
 // ================================================================== generering
