@@ -11,10 +11,15 @@ Lager OpenBridge-komponenter i Designsystemet-struktur i Penpot, bundet til desi
 
 ## Oppdatere pluginet
 
-Penpot lagrer manifestet når pluginet installeres, og nettleseren mellomlagrer `plugin.js` i opptil 10 minutter.
-Etter en ny versjon: vent rundt 10 minutter, og lukk og åpne pluginet. Vil du ha den nye versjonen med en gang,
-avinstaller og installer pluginet på nytt med den vanlige adressen. Versjonsnummeret står nederst i pluginvinduet.
-**Ikke** legg til noe etter `manifest.json` i adressen, for da finner ikke Penpot pluginet.
+Penpot lagrer manifestet når pluginet installeres, og nettleseren mellomlagrer filene i opptil 10 minutter.
+For å få en ny versjon med en gang: avinstaller pluginet og installer det med versjonsnummeret i adressen, slik:
+
+```
+https://larsiveg-jpg.github.io/maritim-da-plugin/manifest.json?v=0.4.0/manifest.json
+```
+
+Adressen må slutte på `manifest.json`, ellers legger Penpot til en ekstra `/manifest.json` og finner ikke pluginet.
+Versjonsnummeret står nederst i pluginvinduet.
 
 ## Innhold
 
