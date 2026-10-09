@@ -44,6 +44,7 @@ Regler og mål følger OpenBridge sine web-komponenter (`button`, `icon-button`,
 
 ## Versjoner
 
+- **0.3.1:** Pluginet legger selv til primitiver som mangler i filer importert med en eldre token-fil, og stopper ikke lenger hvis ett token ikke kan lages.
 - **0.3.0:** Tag, teller, statusindikator, verktøytips, fane, segmentvalg, navigasjonselement og kort.
 - **0.2.0:** Ikonknapp, bryter, sjekkboks, radioknapp, inputfelt, alarmbanner og «Generer alle».
 - **0.1.0:** Knapp.
