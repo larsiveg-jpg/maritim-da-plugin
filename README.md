@@ -34,6 +34,14 @@ Lukk og åpne pluginet etter at tiden har gått. **Ikke** legg til noe etter `ma
 | Segmentvalg | 10 | Valgt (Nei, Ja) × Tilstand |
 | Navigasjonselement | 10 | Valgt (Nei, Ja) × Tilstand |
 | Kort | 2 | Tittel (Med, Uten) |
+| Toppfelt | 4 | Alarm (Nei, Ja) × Aktiv (Ja, Nei) |
+| Navigasjonsmeny | 2 | Bredde (Full, Kun ikoner) |
+| Dialogvindu | 3 | Størrelse (Liten 349 px, Middels 540 px, Stor 540 px) |
+| Tabellrad | 7 | Type (Overskrift, Hvile, Hover, Trykket, Valgt, Stripet, Deaktivert) |
+| Glidebryter | 4 | Variant (Vanlig, Forsterket) × Tilstand (Hvile, Deaktivert) |
+| Nedtrekksknapp | 10 | Variant (Normal, Flat) × Tilstand |
+| Menyvalg | 8 | Valgt (Nei, Ja) × Tilstand |
+| Meny | 1 | Nedtrekks- og kontekstmeny med fire valg |
 
 Tilstander: Hvile, Hover, Trykket, Fokus, Deaktivert, og Aktivert der OpenBridge har det.
 
@@ -46,10 +54,13 @@ Regler og mål følger OpenBridge sine web-komponenter (`button`, `icon-button`,
 - **Alarmbanner:** Ukvitterte alarmer blinker i OpenBridge. Det kan ikke vises statisk, så Aktiv har en kant i alvorlighetsfargen og Kvittert har en nøytral kant.
 - **Teller «Varsel» og verktøytips «Forsterket»** bruker `color.neutral.background-default` som tekstfarge. OpenBridge sin `on-selected-active` har nesten samme farge som bakgrunnen i natt-paletten.
 - **Valgt fane** får en skillelinje rundt hele fanen. OpenBridge har bare skillelinjer på sidene.
+- **Sammensatte komponenter** (toppfelt, navigasjonsmeny, dialog, meny) er tegnet med egne lag, ikke med forekomster av de andre komponentene. Bytt gjerne ut delene med forekomster i Penpot.
+- **Glidebryteren** viser en fast verdi (60 %). Flytt håndtaket og «Verdi»-laget for å vise andre verdier.
 - **Ikoner** er enkle plassholdere. Bytt dem ut med OpenBridge-ikoner i Penpot.
 
 ## Versjoner
 
+- **0.4.0:** Toppfelt, navigasjonsmeny, dialogvindu, tabellrad, glidebryter, nedtrekksknapp, menyvalg og meny.
 - **0.3.1:** Pluginet legger selv til primitiver som mangler i filer importert med en eldre token-fil, og stopper ikke lenger hvis ett token ikke kan lages.
 - **0.3.0:** Tag, teller, statusindikator, verktøytips, fane, segmentvalg, navigasjonselement og kort.
 - **0.2.0:** Ikonknapp, bryter, sjekkboks, radioknapp, inputfelt, alarmbanner og «Generer alle».

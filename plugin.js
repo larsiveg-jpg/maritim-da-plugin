@@ -9,7 +9,7 @@
  * Struktur og navngiving: Designsystemet (semantiske tokens, komponent-tokens)
  */
 
-const VERSJON = '0.3.1';
+const VERSJON = '0.4.0';
 
 // ================================================================== tokens
 // Komponent-tokens (Designsystemets tredje lag). Opprettes automatisk i settet
@@ -90,6 +90,37 @@ const KOMPONENT_TOKENS = [
   ["card.border-radius", "borderRadius", "{ob.component.card-border-radius-regular}"],
   ["card.heading-height", "sizing", "{ob.component.card-heading-container-height}"],
   ["card.icon-size", "sizing", "{ob.component.card-leading-icon-size}"],
+  ["topbar.height", "sizing", "{ob.component.topbar-touch-target-size}"],
+  ["topbar.padding-inline", "spacing", "{ob.component.topbar-margin-global}"],
+  ["topbar.gap", "spacing", "{ob.component.topbar-label-spacing}"],
+  ["topbar.icon-size", "sizing", "{ob.component.topbar-icon-size}"],
+  ["divider.height-small", "sizing", "{ob.component.divider-height-small}"],
+  ["divider.width", "sizing", "1px"],
+  ["navmenu.width", "sizing", "320px"],
+  ["navmenu.padding-block", "spacing", "{ob.component.navigation-menu-margin-vertical}"],
+  ["navmenu.padding-inline", "spacing", "{ob.component.navigation-menu-footer-margin-horizontal}"],
+  ["modal.padding-inline", "spacing", "{ob.component.modal-margin-vertical}"],
+  ["modal.title-height", "sizing", "{ob.component.modal-title-container-height}"],
+  ["modal.gap", "spacing", "{ob.component.modal-label-spacing}"],
+  ["modal.button-gap", "spacing", "{ob.component.modal-button-spacing}"],
+  ["modal.actions-padding-block", "spacing", "{ob.component.modal-padding-vertical-button-container}"],
+  ["modal.border-radius", "borderRadius", "{ob.component.modal-border-radius}"],
+  ["modal.icon-size", "sizing", "{ob.component.modal-icon-size}"],
+  ["table.row-height", "sizing", "{ob.component.table-item-touch-target-size}"],
+  ["table.padding-inline", "spacing", "{ob.component.table-item-padding-horizontal}"],
+  ["table.header-padding-inline", "spacing", "{ob.component.table-header-item-padding-horizontal}"],
+  ["table.border-radius", "borderRadius", "{ob.component.table-item-border-radius}"],
+  ["slider.height", "sizing", "{ob.component.slider-touch-target-size}"],
+  ["slider.track-height", "sizing", "{ob.component.slider-regular-track-height}"],
+  ["slider.enhanced-track-height", "sizing", "{ob.component.slider-enhanced-track-height}"],
+  ["slider.thumb-width", "sizing", "{ob.component.slider-regular-thumb-width}"],
+  ["slider.thumb-height", "sizing", "{ob.component.slider-regular-thumb-height}"],
+  ["slider.border-radius", "borderRadius", "{ob.component.slider-border-radius}"],
+  ["slider.thumb-border", "borderWidth", "{ob.component.slider-regular-thumb-border-width}"],
+  ["slider.enhanced-thumb-border", "borderWidth", "{ob.component.slider-enhanced-thumb-border-size}"],
+  ["menu.width", "sizing", "{ob.component.context-menu-menu-width}"],
+  ["menu.padding", "spacing", "{ob.component.context-menu-margin-vertical}"],
+  ["menu.border-radius", "borderRadius", "{ob.component.context-menu-border-radius}"],
   ["color.status.active.fill", "color", "{ob.base.blue-500}"],
   ["color.status.active.border", "color", "{ob.base.blue-600}"],
   ["color.tag.blue.text", "color", "{ob.base.blue-600}"],
@@ -135,7 +166,7 @@ const KOMPONENT_TOKENS = [
 
 // Primitivene komponent-tokenene peker til, per sett (generert av bygg-tokens.mjs).
 // Fyller hull i filer importert med en eldre token-fil, så du slipper å importere på nytt.
-const PRIMITIV_TILLEGG = {"primitiver/palett/dag": [["ob.element.inactive", "color", "#707070"], ["ob.element.disabled", "color", "#bebebe"], ["ob.element.symbol", "color", "#8e8e8e"], ["ob.base.blue-050", "color", "#e4eefd"], ["ob.base.blue-600", "color", "#1d3c67"], ["ob.base.blue-100", "color", "#cadefc"], ["ob.base.blue-500", "color", "#2d548b"], ["ob.base.cyan-050", "color", "#dff0f9"], ["ob.base.cyan-100", "color", "#bfe2f3"], ["ob.base.cyan-500", "color", "#005a7b"], ["ob.base.cyan-600", "color", "#00415b"], ["ob.base.red-050", "color", "#fde9e8"], ["ob.base.red-100", "color", "#fcd2cf"], ["ob.base.red-500", "color", "#863d3c"], ["ob.base.red-600", "color", "#622929"], ["ob.base.orange-050", "color", "#f9ece1"], ["ob.base.orange-100", "color", "#f4d7bf"], ["ob.base.orange-500", "color", "#7c4606"], ["ob.base.orange-600", "color", "#5b3100"], ["ob.base.teal-050", "color", "#e2f2f3"], ["ob.base.teal-100", "color", "#bee4e5"], ["ob.base.teal-500", "color", "#005d61"], ["ob.base.teal-600", "color", "#004346"], ["ob.base.mint-050", "color", "#e2f3eb"], ["ob.base.mint-100", "color", "#bfe5d5"], ["ob.base.mint-500", "color", "#005f43"], ["ob.base.mint-600", "color", "#00452f"], ["ob.base.yellow-050", "color", "#f2efdf"], ["ob.base.yellow-100", "color", "#e4dcb9"], ["ob.base.yellow-500", "color", "#635200"], ["ob.base.yellow-600", "color", "#483a00"], ["ob.base.purple-050", "color", "#f8eaf5"], ["ob.base.purple-100", "color", "#f2d3ec"], ["ob.base.purple-500", "color", "#774070"], ["ob.base.purple-600", "color", "#572c52"], ["ob.base.indigo-050", "color", "#efedfc"], ["ob.base.indigo-100", "color", "#ddd8fa"], ["ob.base.indigo-500", "color", "#584989"], ["ob.base.indigo-600", "color", "#3f3365"]], "primitiver/palett/skumring": [["ob.element.inactive", "color", "#898989"], ["ob.element.disabled", "color", "#4d4d4d"], ["ob.element.symbol", "color", "#6c6c6c"], ["ob.base.blue-050", "color", "#202a37"], ["ob.base.blue-600", "color", "#a9d1ff"], ["ob.base.blue-100", "color", "#283545"], ["ob.base.blue-500", "color", "#80aeea"], ["ob.base.cyan-050", "color", "#182b32"], ["ob.base.cyan-100", "color", "#1e3741"], ["ob.base.cyan-500", "color", "#5ab7d9"], ["ob.base.cyan-600", "color", "#8dd8f6"], ["ob.base.red-050", "color", "#372523"], ["ob.base.red-100", "color", "#452e2c"], ["ob.base.red-500", "color", "#e9968f"], ["ob.base.red-600", "color", "#ffbeb7"], ["ob.base.orange-050", "color", "#33271a"], ["ob.base.orange-100", "color", "#403121"], ["ob.base.orange-500", "color", "#d8a166"], ["ob.base.orange-600", "color", "#f5c593"], ["ob.base.teal-050", "color", "#162c2c"], ["ob.base.teal-100", "color", "#1c3939"], ["ob.base.teal-500", "color", "#4dbcbb"], ["ob.base.teal-600", "color", "#84dcdb"], ["ob.base.mint-050", "color", "#1a2c25"], ["ob.base.mint-100", "color", "#223930"], ["ob.base.mint-500", "color", "#65bc99"], ["ob.base.mint-600", "color", "#94dcbd"], ["ob.base.yellow-050", "color", "#2c2919"], ["ob.base.yellow-100", "color", "#393420"], ["ob.base.yellow-500", "color", "#bdac5e"], ["ob.base.yellow-600", "color", "#ddce8d"], ["ob.base.purple-050", "color", "#332530"], ["ob.base.purple-100", "color", "#412e3c"], ["ob.base.purple-500", "color", "#d897c9"], ["ob.base.purple-600", "color", "#f5bce8"], ["ob.base.indigo-050", "color", "#2a2735"], ["ob.base.indigo-100", "color", "#363144"], ["ob.base.indigo-500", "color", "#b2a1e7"], ["ob.base.indigo-600", "color", "#d3c6ff"]], "primitiver/palett/natt": [["ob.element.inactive", "color", "#9c6a34"], ["ob.element.disabled", "color", "#48341f"], ["ob.element.symbol", "color", "#78532c"], ["ob.base.blue-050", "color", "#0e131c"], ["ob.base.blue-600", "color", "#83b7ff"], ["ob.base.blue-100", "color", "#171e2a"], ["ob.base.blue-500", "color", "#6997d9"], ["ob.base.cyan-050", "color", "#09151a"], ["ob.base.cyan-100", "color", "#0f2027"], ["ob.base.cyan-500", "color", "#2fa1c9"], ["ob.base.cyan-600", "color", "#4fc1ed"], ["ob.base.red-050", "color", "#1b0f12"], ["ob.base.red-100", "color", "#29191c"], ["ob.base.red-500", "color", "#d57b8e"], ["ob.base.red-600", "color", "#fa98ac"], ["ob.base.orange-050", "color", "#191109"], ["ob.base.orange-100", "color", "#271b10"], ["ob.base.orange-500", "color", "#c78842"], ["ob.base.orange-600", "color", "#eaa75e"], ["ob.base.teal-050", "color", "#071414"], ["ob.base.teal-100", "color", "#0d2121"], ["ob.base.teal-500", "color", "#00a6aa"], ["ob.base.teal-600", "color", "#32c7cb"], ["ob.base.mint-050", "color", "#09140f"], ["ob.base.mint-100", "color", "#10211a"], ["ob.base.mint-500", "color", "#38a784"], ["ob.base.mint-600", "color", "#58c8a2"], ["ob.base.yellow-050", "color", "#131309"], ["ob.base.yellow-100", "color", "#1f1f10"], ["ob.base.yellow-500", "color", "#9d993d"], ["ob.base.yellow-600", "color", "#bcb858"], ["ob.base.purple-050", "color", "#191018"], ["ob.base.purple-100", "color", "#261a25"], ["ob.base.purple-500", "color", "#bf80bf"], ["ob.base.purple-600", "color", "#e19ee1"], ["ob.base.indigo-050", "color", "#12121c"], ["ob.base.indigo-100", "color", "#1d1c2a"], ["ob.base.indigo-500", "color", "#938dda"], ["ob.base.indigo-600", "color", "#b2abff"]], "primitiver/palett/sterkt-lys": [["ob.element.inactive", "color", "#343434"], ["ob.element.disabled", "color", "#888888"], ["ob.element.symbol", "color", "#4f4f50"], ["ob.base.blue-050", "color", "#c0d6f2"], ["ob.base.blue-600", "color", "#072346"], ["ob.base.blue-100", "color", "#9cbde8"], ["ob.base.blue-500", "color", "#0f3461"], ["ob.base.cyan-050", "color", "#bad9e5"], ["ob.base.cyan-100", "color", "#90c2d5"], ["ob.base.cyan-500", "color", "#00394e"], ["ob.base.cyan-600", "color", "#002636"], ["ob.base.red-050", "color", "#f2cbcd"], ["ob.base.red-100", "color", "#e7abae"], ["ob.base.red-500", "color", "#5c2028"], ["ob.base.red-600", "color", "#42131a"], ["ob.base.orange-050", "color", "#ebceb7"], ["ob.base.orange-100", "color", "#deb28d"], ["ob.base.orange-500", "color", "#552800"], ["ob.base.orange-600", "color", "#3c1a00"], ["ob.base.teal-050", "color", "#badad9"], ["ob.base.teal-100", "color", "#92c4c3"], ["ob.base.teal-500", "color", "#003b3b"], ["ob.base.teal-600", "color", "#002828"], ["ob.base.mint-050", "color", "#badbcb"], ["ob.base.mint-100", "color", "#92c6ad"], ["ob.base.mint-500", "color", "#003d25"], ["ob.base.mint-600", "color", "#002917"], ["ob.base.yellow-050", "color", "#dcd4b6"], ["ob.base.yellow-100", "color", "#c7ba8a"], ["ob.base.yellow-500", "color", "#413200"], ["ob.base.yellow-600", "color", "#2d2200"], ["ob.base.purple-050", "color", "#e5cbe6"], ["ob.base.purple-100", "color", "#d6aed7"], ["ob.base.purple-500", "color", "#4e2450"], ["ob.base.purple-600", "color", "#361738"], ["ob.base.indigo-050", "color", "#d1d0f2"], ["ob.base.indigo-100", "color", "#b8b6e9"], ["ob.base.indigo-500", "color", "#342d61"], ["ob.base.indigo-600", "color", "#231d45"]], "primitiver/storrelse/regular": [["ob.size.touch-target-min", "dimension", "48px"], ["ob.size.visual-target-min", "dimension", "32px"], ["ob.size.icon-size-regular", "dimension", "24px"], ["ob.size.border-weight-focusframe", "dimension", "2px"], ["ob.size.list-item-padding-horizontal", "dimension", "16px"], ["ob.size.list-item-item-spacing", "dimension", "8px"], ["ob.component.button-label-spacing", "dimension", "8px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "12px"], ["ob.component.toggle-switch-selection-padding", "dimension", "6px"], ["ob.component.toggle-switch-selection-width", "dimension", "48px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "24px"], ["ob.component.checkbox-border-radius", "dimension", "4px"], ["ob.component.checkbox-label-spacing", "dimension", "8px"], ["ob.component.badge-border-radius", "dimension", "2px"], ["ob.component.navigation-item-icon-size", "dimension", "24px"], ["ob.component.navigation-item-label-spacing", "dimension", "8px"], ["ob.component.navigation-item-touch-target-size", "dimension", "48px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "12px"], ["ob.component.toggle-switch-selection-height", "dimension", "24px"], ["ob.component.icon-button-icon-size", "dimension", "24px"], ["ob.component.badge-padding", "dimension", "2px"], ["ob.component.navigation-item-border-radius", "dimension", "6px"], ["ob.component.radio-button-selection-size", "dimension", "24px"], ["ob.component.radio-button-thumb-size", "dimension", "8px"], ["ob.component.button-visual-size", "dimension", "32px"], ["ob.component.button-border-radius", "dimension", "6px"], ["ob.component.card-border-radius-regular", "dimension", "6px"], ["ob.component.button-touch-target-size", "dimension", "48px"], ["ob.component.button-icon-size", "dimension", "24px"], ["ob.component.icon-button-visual-target-size", "dimension", "32px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "32px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "6px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "48px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "32px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "4px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "6px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "8px"], ["ob.component.badge-min-size-large", "dimension", "24px"], ["ob.component.tab-item-touch-target-size", "dimension", "48px"], ["ob.component.tab-item-icon-size", "dimension", "24px"], ["ob.component.tab-item-label-spacing", "dimension", "8px"], ["ob.component.tab-item-padding-horizontal", "dimension", "16px"], ["ob.component.tooltip-icon-size", "dimension", "24px"], ["ob.component.tooltip-size", "dimension", "32px"], ["ob.component.tooltip-label-spacing", "dimension", "8px"], ["ob.component.tooltip-border-radius", "dimension", "4px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "4px"], ["ob.component.tag-icon-size", "dimension", "16px"], ["ob.component.tag-label-spacing", "dimension", "4px"], ["ob.component.tag-padding-horizontal", "dimension", "6px"], ["ob.component.tag-visual-target", "dimension", "24px"], ["ob.component.tag-border-radius", "dimension", "4px"], ["ob.component.tag-visual-target-large", "dimension", "32px"], ["ob.component.tag-padding-horizontal-large", "dimension", "6px"], ["ob.component.tag-icon-size-large", "dimension", "24px"], ["ob.component.tooltip-padding-horizontal", "dimension", "8px"]], "primitiver/storrelse/medium": [["ob.size.touch-target-min", "dimension", "56px"], ["ob.size.visual-target-min", "dimension", "40px"], ["ob.size.icon-size-regular", "dimension", "32px"], ["ob.size.border-weight-focusframe", "dimension", "2px"], ["ob.size.list-item-padding-horizontal", "dimension", "16px"], ["ob.size.list-item-item-spacing", "dimension", "8px"], ["ob.component.button-label-spacing", "dimension", "8px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "16px"], ["ob.component.toggle-switch-selection-padding", "dimension", "8px"], ["ob.component.toggle-switch-selection-width", "dimension", "64px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "32px"], ["ob.component.checkbox-border-radius", "dimension", "4px"], ["ob.component.checkbox-label-spacing", "dimension", "12px"], ["ob.component.badge-border-radius", "dimension", "2px"], ["ob.component.navigation-item-icon-size", "dimension", "32px"], ["ob.component.navigation-item-label-spacing", "dimension", "8px"], ["ob.component.navigation-item-touch-target-size", "dimension", "56px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "12px"], ["ob.component.toggle-switch-selection-height", "dimension", "32px"], ["ob.component.icon-button-icon-size", "dimension", "32px"], ["ob.component.badge-padding", "dimension", "2px"], ["ob.component.navigation-item-border-radius", "dimension", "6px"], ["ob.component.radio-button-selection-size", "dimension", "32px"], ["ob.component.radio-button-thumb-size", "dimension", "10px"], ["ob.component.button-visual-size", "dimension", "40px"], ["ob.component.button-border-radius", "dimension", "6px"], ["ob.component.card-border-radius-regular", "dimension", "6px"], ["ob.component.button-touch-target-size", "dimension", "56px"], ["ob.component.button-icon-size", "dimension", "32px"], ["ob.component.icon-button-visual-target-size", "dimension", "40px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "40px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "6px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "56px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "40px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "4px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "6px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "8px"], ["ob.component.badge-min-size-large", "dimension", "28px"], ["ob.component.tab-item-touch-target-size", "dimension", "56px"], ["ob.component.tab-item-icon-size", "dimension", "32px"], ["ob.component.tab-item-label-spacing", "dimension", "8px"], ["ob.component.tab-item-padding-horizontal", "dimension", "16px"], ["ob.component.tooltip-icon-size", "dimension", "32px"], ["ob.component.tooltip-size", "dimension", "40px"], ["ob.component.tooltip-label-spacing", "dimension", "8px"], ["ob.component.tooltip-border-radius", "dimension", "4px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "4px"], ["ob.component.tag-icon-size", "dimension", "20px"], ["ob.component.tag-label-spacing", "dimension", "4px"], ["ob.component.tag-padding-horizontal", "dimension", "6px"], ["ob.component.tag-visual-target", "dimension", "28px"], ["ob.component.tag-border-radius", "dimension", "4px"], ["ob.component.tag-visual-target-large", "dimension", "40px"], ["ob.component.tag-padding-horizontal-large", "dimension", "6px"], ["ob.component.tag-icon-size-large", "dimension", "32px"], ["ob.component.tooltip-padding-horizontal", "dimension", "8px"]], "primitiver/storrelse/large": [["ob.size.touch-target-min", "dimension", "72px"], ["ob.size.visual-target-min", "dimension", "56px"], ["ob.size.icon-size-regular", "dimension", "40px"], ["ob.size.border-weight-focusframe", "dimension", "4px"], ["ob.size.list-item-padding-horizontal", "dimension", "24px"], ["ob.size.list-item-item-spacing", "dimension", "12px"], ["ob.component.button-label-spacing", "dimension", "12px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "20px"], ["ob.component.toggle-switch-selection-padding", "dimension", "10px"], ["ob.component.toggle-switch-selection-width", "dimension", "80px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "40px"], ["ob.component.checkbox-border-radius", "dimension", "6px"], ["ob.component.checkbox-label-spacing", "dimension", "12px"], ["ob.component.badge-border-radius", "dimension", "4px"], ["ob.component.navigation-item-icon-size", "dimension", "40px"], ["ob.component.navigation-item-label-spacing", "dimension", "12px"], ["ob.component.navigation-item-touch-target-size", "dimension", "72px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "16px"], ["ob.component.toggle-switch-selection-height", "dimension", "40px"], ["ob.component.icon-button-icon-size", "dimension", "40px"], ["ob.component.badge-padding", "dimension", "3px"], ["ob.component.navigation-item-border-radius", "dimension", "8px"], ["ob.component.radio-button-selection-size", "dimension", "40px"], ["ob.component.radio-button-thumb-size", "dimension", "12px"], ["ob.component.button-visual-size", "dimension", "56px"], ["ob.component.button-border-radius", "dimension", "8px"], ["ob.component.card-border-radius-regular", "dimension", "8px"], ["ob.component.button-touch-target-size", "dimension", "72px"], ["ob.component.button-icon-size", "dimension", "40px"], ["ob.component.icon-button-visual-target-size", "dimension", "56px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "56px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "72px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "56px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "12px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "8px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "12px"], ["ob.component.badge-min-size-large", "dimension", "38px"], ["ob.component.tab-item-touch-target-size", "dimension", "72px"], ["ob.component.tab-item-icon-size", "dimension", "40px"], ["ob.component.tab-item-label-spacing", "dimension", "12px"], ["ob.component.tab-item-padding-horizontal", "dimension", "24px"], ["ob.component.tooltip-icon-size", "dimension", "40px"], ["ob.component.tooltip-size", "dimension", "48px"], ["ob.component.tooltip-label-spacing", "dimension", "12px"], ["ob.component.tooltip-border-radius", "dimension", "6px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "6px"], ["ob.component.tag-icon-size", "dimension", "24px"], ["ob.component.tag-label-spacing", "dimension", "6px"], ["ob.component.tag-padding-horizontal", "dimension", "8px"], ["ob.component.tag-visual-target", "dimension", "32px"], ["ob.component.tag-border-radius", "dimension", "6px"], ["ob.component.tag-visual-target-large", "dimension", "48px"], ["ob.component.tag-padding-horizontal-large", "dimension", "8px"], ["ob.component.tag-icon-size-large", "dimension", "40px"], ["ob.component.tooltip-padding-horizontal", "dimension", "12px"]], "primitiver/storrelse/xl": [["ob.size.touch-target-min", "dimension", "96px"], ["ob.size.visual-target-min", "dimension", "72px"], ["ob.size.icon-size-regular", "dimension", "48px"], ["ob.size.border-weight-focusframe", "dimension", "4px"], ["ob.size.list-item-padding-horizontal", "dimension", "32px"], ["ob.size.list-item-item-spacing", "dimension", "16px"], ["ob.component.button-label-spacing", "dimension", "16px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "24px"], ["ob.component.toggle-switch-selection-padding", "dimension", "12px"], ["ob.component.toggle-switch-selection-width", "dimension", "96px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "48px"], ["ob.component.checkbox-border-radius", "dimension", "8px"], ["ob.component.checkbox-label-spacing", "dimension", "16px"], ["ob.component.badge-border-radius", "dimension", "4px"], ["ob.component.navigation-item-icon-size", "dimension", "48px"], ["ob.component.navigation-item-label-spacing", "dimension", "16px"], ["ob.component.navigation-item-touch-target-size", "dimension", "96px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-switch-selection-height", "dimension", "48px"], ["ob.component.icon-button-icon-size", "dimension", "48px"], ["ob.component.badge-padding", "dimension", "4px"], ["ob.component.navigation-item-border-radius", "dimension", "12px"], ["ob.component.radio-button-selection-size", "dimension", "48px"], ["ob.component.radio-button-thumb-size", "dimension", "16px"], ["ob.component.button-visual-size", "dimension", "72px"], ["ob.component.button-border-radius", "dimension", "12px"], ["ob.component.card-border-radius-regular", "dimension", "12px"], ["ob.component.button-touch-target-size", "dimension", "96px"], ["ob.component.button-icon-size", "dimension", "48px"], ["ob.component.icon-button-visual-target-size", "dimension", "72px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "72px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "12px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "96px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "72px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "16px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "12px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "16px"], ["ob.component.badge-min-size-large", "dimension", "48px"], ["ob.component.tab-item-touch-target-size", "dimension", "96px"], ["ob.component.tab-item-icon-size", "dimension", "48px"], ["ob.component.tab-item-label-spacing", "dimension", "16px"], ["ob.component.tab-item-padding-horizontal", "dimension", "32px"], ["ob.component.tooltip-icon-size", "dimension", "48px"], ["ob.component.tooltip-size", "dimension", "64px"], ["ob.component.tooltip-label-spacing", "dimension", "16px"], ["ob.component.tooltip-border-radius", "dimension", "8px"], ["ob.component.card-leading-icon-size", "dimension", "8px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "8px"], ["ob.component.tag-icon-size", "dimension", "32px"], ["ob.component.tag-label-spacing", "dimension", "8px"], ["ob.component.tag-padding-horizontal", "dimension", "12px"], ["ob.component.tag-visual-target", "dimension", "48px"], ["ob.component.tag-border-radius", "dimension", "8px"], ["ob.component.tag-visual-target-large", "dimension", "64px"], ["ob.component.tag-padding-horizontal-large", "dimension", "12px"], ["ob.component.tag-icon-size-large", "dimension", "48px"], ["ob.component.tooltip-padding-horizontal", "dimension", "16px"]], "primitiver/felles": [["ob.border-radius.2", "borderRadius", "2"], ["ob.border-radius.6", "borderRadius", "6"]]};
+const PRIMITIV_TILLEGG = {"primitiver/palett/dag": [["ob.element.inactive", "color", "#707070"], ["ob.element.disabled", "color", "#bebebe"], ["ob.element.symbol", "color", "#8e8e8e"], ["ob.base.blue-050", "color", "#e4eefd"], ["ob.base.blue-600", "color", "#1d3c67"], ["ob.base.blue-100", "color", "#cadefc"], ["ob.base.blue-500", "color", "#2d548b"], ["ob.base.cyan-050", "color", "#dff0f9"], ["ob.base.cyan-100", "color", "#bfe2f3"], ["ob.base.cyan-500", "color", "#005a7b"], ["ob.base.cyan-600", "color", "#00415b"], ["ob.base.red-050", "color", "#fde9e8"], ["ob.base.red-100", "color", "#fcd2cf"], ["ob.base.red-500", "color", "#863d3c"], ["ob.base.red-600", "color", "#622929"], ["ob.base.orange-050", "color", "#f9ece1"], ["ob.base.orange-100", "color", "#f4d7bf"], ["ob.base.orange-500", "color", "#7c4606"], ["ob.base.orange-600", "color", "#5b3100"], ["ob.base.teal-050", "color", "#e2f2f3"], ["ob.base.teal-100", "color", "#bee4e5"], ["ob.base.teal-500", "color", "#005d61"], ["ob.base.teal-600", "color", "#004346"], ["ob.base.mint-050", "color", "#e2f3eb"], ["ob.base.mint-100", "color", "#bfe5d5"], ["ob.base.mint-500", "color", "#005f43"], ["ob.base.mint-600", "color", "#00452f"], ["ob.base.yellow-050", "color", "#f2efdf"], ["ob.base.yellow-100", "color", "#e4dcb9"], ["ob.base.yellow-500", "color", "#635200"], ["ob.base.yellow-600", "color", "#483a00"], ["ob.base.purple-050", "color", "#f8eaf5"], ["ob.base.purple-100", "color", "#f2d3ec"], ["ob.base.purple-500", "color", "#774070"], ["ob.base.purple-600", "color", "#572c52"], ["ob.base.indigo-050", "color", "#efedfc"], ["ob.base.indigo-100", "color", "#ddd8fa"], ["ob.base.indigo-500", "color", "#584989"], ["ob.base.indigo-600", "color", "#3f3365"]], "primitiver/palett/skumring": [["ob.element.inactive", "color", "#898989"], ["ob.element.disabled", "color", "#4d4d4d"], ["ob.element.symbol", "color", "#6c6c6c"], ["ob.base.blue-050", "color", "#202a37"], ["ob.base.blue-600", "color", "#a9d1ff"], ["ob.base.blue-100", "color", "#283545"], ["ob.base.blue-500", "color", "#80aeea"], ["ob.base.cyan-050", "color", "#182b32"], ["ob.base.cyan-100", "color", "#1e3741"], ["ob.base.cyan-500", "color", "#5ab7d9"], ["ob.base.cyan-600", "color", "#8dd8f6"], ["ob.base.red-050", "color", "#372523"], ["ob.base.red-100", "color", "#452e2c"], ["ob.base.red-500", "color", "#e9968f"], ["ob.base.red-600", "color", "#ffbeb7"], ["ob.base.orange-050", "color", "#33271a"], ["ob.base.orange-100", "color", "#403121"], ["ob.base.orange-500", "color", "#d8a166"], ["ob.base.orange-600", "color", "#f5c593"], ["ob.base.teal-050", "color", "#162c2c"], ["ob.base.teal-100", "color", "#1c3939"], ["ob.base.teal-500", "color", "#4dbcbb"], ["ob.base.teal-600", "color", "#84dcdb"], ["ob.base.mint-050", "color", "#1a2c25"], ["ob.base.mint-100", "color", "#223930"], ["ob.base.mint-500", "color", "#65bc99"], ["ob.base.mint-600", "color", "#94dcbd"], ["ob.base.yellow-050", "color", "#2c2919"], ["ob.base.yellow-100", "color", "#393420"], ["ob.base.yellow-500", "color", "#bdac5e"], ["ob.base.yellow-600", "color", "#ddce8d"], ["ob.base.purple-050", "color", "#332530"], ["ob.base.purple-100", "color", "#412e3c"], ["ob.base.purple-500", "color", "#d897c9"], ["ob.base.purple-600", "color", "#f5bce8"], ["ob.base.indigo-050", "color", "#2a2735"], ["ob.base.indigo-100", "color", "#363144"], ["ob.base.indigo-500", "color", "#b2a1e7"], ["ob.base.indigo-600", "color", "#d3c6ff"]], "primitiver/palett/natt": [["ob.element.inactive", "color", "#9c6a34"], ["ob.element.disabled", "color", "#48341f"], ["ob.element.symbol", "color", "#78532c"], ["ob.base.blue-050", "color", "#0e131c"], ["ob.base.blue-600", "color", "#83b7ff"], ["ob.base.blue-100", "color", "#171e2a"], ["ob.base.blue-500", "color", "#6997d9"], ["ob.base.cyan-050", "color", "#09151a"], ["ob.base.cyan-100", "color", "#0f2027"], ["ob.base.cyan-500", "color", "#2fa1c9"], ["ob.base.cyan-600", "color", "#4fc1ed"], ["ob.base.red-050", "color", "#1b0f12"], ["ob.base.red-100", "color", "#29191c"], ["ob.base.red-500", "color", "#d57b8e"], ["ob.base.red-600", "color", "#fa98ac"], ["ob.base.orange-050", "color", "#191109"], ["ob.base.orange-100", "color", "#271b10"], ["ob.base.orange-500", "color", "#c78842"], ["ob.base.orange-600", "color", "#eaa75e"], ["ob.base.teal-050", "color", "#071414"], ["ob.base.teal-100", "color", "#0d2121"], ["ob.base.teal-500", "color", "#00a6aa"], ["ob.base.teal-600", "color", "#32c7cb"], ["ob.base.mint-050", "color", "#09140f"], ["ob.base.mint-100", "color", "#10211a"], ["ob.base.mint-500", "color", "#38a784"], ["ob.base.mint-600", "color", "#58c8a2"], ["ob.base.yellow-050", "color", "#131309"], ["ob.base.yellow-100", "color", "#1f1f10"], ["ob.base.yellow-500", "color", "#9d993d"], ["ob.base.yellow-600", "color", "#bcb858"], ["ob.base.purple-050", "color", "#191018"], ["ob.base.purple-100", "color", "#261a25"], ["ob.base.purple-500", "color", "#bf80bf"], ["ob.base.purple-600", "color", "#e19ee1"], ["ob.base.indigo-050", "color", "#12121c"], ["ob.base.indigo-100", "color", "#1d1c2a"], ["ob.base.indigo-500", "color", "#938dda"], ["ob.base.indigo-600", "color", "#b2abff"]], "primitiver/palett/sterkt-lys": [["ob.element.inactive", "color", "#343434"], ["ob.element.disabled", "color", "#888888"], ["ob.element.symbol", "color", "#4f4f50"], ["ob.base.blue-050", "color", "#c0d6f2"], ["ob.base.blue-600", "color", "#072346"], ["ob.base.blue-100", "color", "#9cbde8"], ["ob.base.blue-500", "color", "#0f3461"], ["ob.base.cyan-050", "color", "#bad9e5"], ["ob.base.cyan-100", "color", "#90c2d5"], ["ob.base.cyan-500", "color", "#00394e"], ["ob.base.cyan-600", "color", "#002636"], ["ob.base.red-050", "color", "#f2cbcd"], ["ob.base.red-100", "color", "#e7abae"], ["ob.base.red-500", "color", "#5c2028"], ["ob.base.red-600", "color", "#42131a"], ["ob.base.orange-050", "color", "#ebceb7"], ["ob.base.orange-100", "color", "#deb28d"], ["ob.base.orange-500", "color", "#552800"], ["ob.base.orange-600", "color", "#3c1a00"], ["ob.base.teal-050", "color", "#badad9"], ["ob.base.teal-100", "color", "#92c4c3"], ["ob.base.teal-500", "color", "#003b3b"], ["ob.base.teal-600", "color", "#002828"], ["ob.base.mint-050", "color", "#badbcb"], ["ob.base.mint-100", "color", "#92c6ad"], ["ob.base.mint-500", "color", "#003d25"], ["ob.base.mint-600", "color", "#002917"], ["ob.base.yellow-050", "color", "#dcd4b6"], ["ob.base.yellow-100", "color", "#c7ba8a"], ["ob.base.yellow-500", "color", "#413200"], ["ob.base.yellow-600", "color", "#2d2200"], ["ob.base.purple-050", "color", "#e5cbe6"], ["ob.base.purple-100", "color", "#d6aed7"], ["ob.base.purple-500", "color", "#4e2450"], ["ob.base.purple-600", "color", "#361738"], ["ob.base.indigo-050", "color", "#d1d0f2"], ["ob.base.indigo-100", "color", "#b8b6e9"], ["ob.base.indigo-500", "color", "#342d61"], ["ob.base.indigo-600", "color", "#231d45"]], "primitiver/storrelse/regular": [["ob.size.touch-target-min", "dimension", "48px"], ["ob.size.visual-target-min", "dimension", "32px"], ["ob.size.icon-size-regular", "dimension", "24px"], ["ob.size.border-weight-focusframe", "dimension", "2px"], ["ob.size.list-item-padding-horizontal", "dimension", "16px"], ["ob.size.list-item-item-spacing", "dimension", "8px"], ["ob.component.button-label-spacing", "dimension", "8px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "12px"], ["ob.component.toggle-switch-selection-padding", "dimension", "6px"], ["ob.component.toggle-switch-selection-width", "dimension", "48px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "24px"], ["ob.component.checkbox-border-radius", "dimension", "4px"], ["ob.component.checkbox-label-spacing", "dimension", "8px"], ["ob.component.badge-border-radius", "dimension", "2px"], ["ob.component.navigation-item-icon-size", "dimension", "24px"], ["ob.component.navigation-item-label-spacing", "dimension", "8px"], ["ob.component.navigation-item-touch-target-size", "dimension", "48px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "12px"], ["ob.component.toggle-switch-selection-height", "dimension", "24px"], ["ob.component.icon-button-icon-size", "dimension", "24px"], ["ob.component.badge-padding", "dimension", "2px"], ["ob.component.navigation-item-border-radius", "dimension", "6px"], ["ob.component.radio-button-selection-size", "dimension", "24px"], ["ob.component.radio-button-thumb-size", "dimension", "8px"], ["ob.component.button-visual-size", "dimension", "32px"], ["ob.component.context-menu-menu-width", "dimension", "200px"], ["ob.component.button-border-radius", "dimension", "6px"], ["ob.component.card-border-radius-regular", "dimension", "6px"], ["ob.component.button-touch-target-size", "dimension", "48px"], ["ob.component.button-icon-size", "dimension", "24px"], ["ob.component.icon-button-visual-target-size", "dimension", "32px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "32px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "6px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "48px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "32px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "4px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "6px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "8px"], ["ob.component.topbar-icon-size", "dimension", "24px"], ["ob.component.table-item-touch-target-size", "dimension", "48px"], ["ob.component.table-item-padding-horizontal", "dimension", "12px"], ["ob.component.table-item-border-radius", "dimension", "6px"], ["ob.component.slider-touch-target-size", "dimension", "48px"], ["ob.component.slider-regular-thumb-height", "dimension", "32px"], ["ob.component.slider-border-radius", "dimension", "6px"], ["ob.component.slider-regular-track-height", "dimension", "4px"], ["ob.component.context-menu-border-radius", "dimension", "12px"], ["ob.component.context-menu-margin-vertical", "dimension", "4px"], ["ob.component.slider-regular-thumb-width", "dimension", "12px"], ["ob.component.slider-enhanced-track-height", "dimension", "32px"], ["ob.component.topbar-label-spacing", "dimension", "8px"], ["ob.component.topbar-touch-target-size", "dimension", "48px"], ["ob.component.topbar-margin-global", "dimension", "4px"], ["ob.component.navigation-menu-margin-vertical", "dimension", "4px"], ["ob.component.badge-min-size-large", "dimension", "24px"], ["ob.component.modal-margin-vertical", "dimension", "24px"], ["ob.component.modal-title-container-height", "dimension", "48px"], ["ob.component.modal-button-spacing", "dimension", "8px"], ["ob.component.modal-border-radius", "dimension", "12px"], ["ob.component.modal-padding-vertical-button-container", "dimension", "8px"], ["ob.component.navigation-menu-footer-margin-horizontal", "dimension", "4px"], ["ob.component.tab-item-touch-target-size", "dimension", "48px"], ["ob.component.tab-item-icon-size", "dimension", "24px"], ["ob.component.tab-item-label-spacing", "dimension", "8px"], ["ob.component.tab-item-padding-horizontal", "dimension", "16px"], ["ob.component.divider-height-small", "dimension", "16px"], ["ob.component.table-header-item-padding-horizontal", "dimension", "8px"], ["ob.component.modal-label-spacing", "dimension", "8px"], ["ob.component.modal-icon-size", "dimension", "24px"], ["ob.component.tooltip-icon-size", "dimension", "24px"], ["ob.component.tooltip-size", "dimension", "32px"], ["ob.component.tooltip-label-spacing", "dimension", "8px"], ["ob.component.tooltip-border-radius", "dimension", "4px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.slider-regular-thumb-border-width", "dimension", "2px"], ["ob.component.slider-enhanced-thumb-border-size", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "4px"], ["ob.component.tag-icon-size", "dimension", "16px"], ["ob.component.tag-label-spacing", "dimension", "4px"], ["ob.component.tag-padding-horizontal", "dimension", "6px"], ["ob.component.tag-visual-target", "dimension", "24px"], ["ob.component.tag-border-radius", "dimension", "4px"], ["ob.component.tag-visual-target-large", "dimension", "32px"], ["ob.component.tag-padding-horizontal-large", "dimension", "6px"], ["ob.component.tag-icon-size-large", "dimension", "24px"], ["ob.component.tooltip-padding-horizontal", "dimension", "8px"]], "primitiver/storrelse/medium": [["ob.size.touch-target-min", "dimension", "56px"], ["ob.size.visual-target-min", "dimension", "40px"], ["ob.size.icon-size-regular", "dimension", "32px"], ["ob.size.border-weight-focusframe", "dimension", "2px"], ["ob.size.list-item-padding-horizontal", "dimension", "16px"], ["ob.size.list-item-item-spacing", "dimension", "8px"], ["ob.component.button-label-spacing", "dimension", "8px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "16px"], ["ob.component.toggle-switch-selection-padding", "dimension", "8px"], ["ob.component.toggle-switch-selection-width", "dimension", "64px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "32px"], ["ob.component.checkbox-border-radius", "dimension", "4px"], ["ob.component.checkbox-label-spacing", "dimension", "12px"], ["ob.component.badge-border-radius", "dimension", "2px"], ["ob.component.navigation-item-icon-size", "dimension", "32px"], ["ob.component.navigation-item-label-spacing", "dimension", "8px"], ["ob.component.navigation-item-touch-target-size", "dimension", "56px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "12px"], ["ob.component.toggle-switch-selection-height", "dimension", "32px"], ["ob.component.icon-button-icon-size", "dimension", "32px"], ["ob.component.badge-padding", "dimension", "2px"], ["ob.component.navigation-item-border-radius", "dimension", "6px"], ["ob.component.radio-button-selection-size", "dimension", "32px"], ["ob.component.radio-button-thumb-size", "dimension", "10px"], ["ob.component.button-visual-size", "dimension", "40px"], ["ob.component.context-menu-menu-width", "dimension", "320px"], ["ob.component.button-border-radius", "dimension", "6px"], ["ob.component.card-border-radius-regular", "dimension", "6px"], ["ob.component.button-touch-target-size", "dimension", "56px"], ["ob.component.button-icon-size", "dimension", "32px"], ["ob.component.icon-button-visual-target-size", "dimension", "40px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "40px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "6px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "56px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "40px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "4px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "6px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "8px"], ["ob.component.topbar-icon-size", "dimension", "32px"], ["ob.component.table-item-touch-target-size", "dimension", "56px"], ["ob.component.table-item-padding-horizontal", "dimension", "12px"], ["ob.component.table-item-border-radius", "dimension", "6px"], ["ob.component.slider-touch-target-size", "dimension", "56px"], ["ob.component.slider-regular-thumb-height", "dimension", "32px"], ["ob.component.slider-border-radius", "dimension", "6px"], ["ob.component.slider-regular-track-height", "dimension", "6px"], ["ob.component.context-menu-border-radius", "dimension", "12px"], ["ob.component.context-menu-margin-vertical", "dimension", "4px"], ["ob.component.slider-regular-thumb-width", "dimension", "12px"], ["ob.component.slider-enhanced-track-height", "dimension", "32px"], ["ob.component.topbar-label-spacing", "dimension", "8px"], ["ob.component.topbar-touch-target-size", "dimension", "56px"], ["ob.component.topbar-margin-global", "dimension", "4px"], ["ob.component.navigation-menu-margin-vertical", "dimension", "4px"], ["ob.component.badge-min-size-large", "dimension", "28px"], ["ob.component.modal-margin-vertical", "dimension", "24px"], ["ob.component.modal-title-container-height", "dimension", "56px"], ["ob.component.modal-button-spacing", "dimension", "8px"], ["ob.component.modal-border-radius", "dimension", "12px"], ["ob.component.modal-padding-vertical-button-container", "dimension", "8px"], ["ob.component.navigation-menu-footer-margin-horizontal", "dimension", "4px"], ["ob.component.tab-item-touch-target-size", "dimension", "56px"], ["ob.component.tab-item-icon-size", "dimension", "32px"], ["ob.component.tab-item-label-spacing", "dimension", "8px"], ["ob.component.tab-item-padding-horizontal", "dimension", "16px"], ["ob.component.divider-height-small", "dimension", "16px"], ["ob.component.table-header-item-padding-horizontal", "dimension", "8px"], ["ob.component.modal-label-spacing", "dimension", "8px"], ["ob.component.modal-icon-size", "dimension", "32px"], ["ob.component.tooltip-icon-size", "dimension", "32px"], ["ob.component.tooltip-size", "dimension", "40px"], ["ob.component.tooltip-label-spacing", "dimension", "8px"], ["ob.component.tooltip-border-radius", "dimension", "4px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.slider-regular-thumb-border-width", "dimension", "0px"], ["ob.component.slider-enhanced-thumb-border-size", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "4px"], ["ob.component.tag-icon-size", "dimension", "20px"], ["ob.component.tag-label-spacing", "dimension", "4px"], ["ob.component.tag-padding-horizontal", "dimension", "6px"], ["ob.component.tag-visual-target", "dimension", "28px"], ["ob.component.tag-border-radius", "dimension", "4px"], ["ob.component.tag-visual-target-large", "dimension", "40px"], ["ob.component.tag-padding-horizontal-large", "dimension", "6px"], ["ob.component.tag-icon-size-large", "dimension", "32px"], ["ob.component.tooltip-padding-horizontal", "dimension", "8px"]], "primitiver/storrelse/large": [["ob.size.touch-target-min", "dimension", "72px"], ["ob.size.visual-target-min", "dimension", "56px"], ["ob.size.icon-size-regular", "dimension", "40px"], ["ob.size.border-weight-focusframe", "dimension", "4px"], ["ob.size.list-item-padding-horizontal", "dimension", "24px"], ["ob.size.list-item-item-spacing", "dimension", "12px"], ["ob.component.button-label-spacing", "dimension", "12px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "20px"], ["ob.component.toggle-switch-selection-padding", "dimension", "10px"], ["ob.component.toggle-switch-selection-width", "dimension", "80px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "40px"], ["ob.component.checkbox-border-radius", "dimension", "6px"], ["ob.component.checkbox-label-spacing", "dimension", "12px"], ["ob.component.badge-border-radius", "dimension", "4px"], ["ob.component.navigation-item-icon-size", "dimension", "40px"], ["ob.component.navigation-item-label-spacing", "dimension", "12px"], ["ob.component.navigation-item-touch-target-size", "dimension", "72px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "16px"], ["ob.component.toggle-switch-selection-height", "dimension", "40px"], ["ob.component.icon-button-icon-size", "dimension", "40px"], ["ob.component.badge-padding", "dimension", "3px"], ["ob.component.navigation-item-border-radius", "dimension", "8px"], ["ob.component.radio-button-selection-size", "dimension", "40px"], ["ob.component.radio-button-thumb-size", "dimension", "12px"], ["ob.component.button-visual-size", "dimension", "56px"], ["ob.component.context-menu-menu-width", "dimension", "400px"], ["ob.component.button-border-radius", "dimension", "8px"], ["ob.component.card-border-radius-regular", "dimension", "8px"], ["ob.component.button-touch-target-size", "dimension", "72px"], ["ob.component.button-icon-size", "dimension", "40px"], ["ob.component.icon-button-visual-target-size", "dimension", "56px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "56px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "72px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "56px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "12px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "8px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "12px"], ["ob.component.topbar-icon-size", "dimension", "40px"], ["ob.component.table-item-touch-target-size", "dimension", "72px"], ["ob.component.table-item-padding-horizontal", "dimension", "16px"], ["ob.component.table-item-border-radius", "dimension", "8px"], ["ob.component.slider-touch-target-size", "dimension", "72px"], ["ob.component.slider-regular-thumb-height", "dimension", "40px"], ["ob.component.slider-border-radius", "dimension", "8px"], ["ob.component.slider-regular-track-height", "dimension", "8px"], ["ob.component.context-menu-border-radius", "dimension", "16px"], ["ob.component.context-menu-margin-vertical", "dimension", "6px"], ["ob.component.slider-regular-thumb-width", "dimension", "16px"], ["ob.component.slider-enhanced-track-height", "dimension", "48px"], ["ob.component.topbar-label-spacing", "dimension", "12px"], ["ob.component.topbar-touch-target-size", "dimension", "72px"], ["ob.component.topbar-margin-global", "dimension", "6px"], ["ob.component.navigation-menu-margin-vertical", "dimension", "6px"], ["ob.component.badge-min-size-large", "dimension", "38px"], ["ob.component.modal-margin-vertical", "dimension", "32px"], ["ob.component.modal-title-container-height", "dimension", "72px"], ["ob.component.modal-button-spacing", "dimension", "12px"], ["ob.component.modal-border-radius", "dimension", "16px"], ["ob.component.modal-padding-vertical-button-container", "dimension", "12px"], ["ob.component.navigation-menu-footer-margin-horizontal", "dimension", "6px"], ["ob.component.tab-item-touch-target-size", "dimension", "72px"], ["ob.component.tab-item-icon-size", "dimension", "40px"], ["ob.component.tab-item-label-spacing", "dimension", "12px"], ["ob.component.tab-item-padding-horizontal", "dimension", "24px"], ["ob.component.divider-height-small", "dimension", "24px"], ["ob.component.table-header-item-padding-horizontal", "dimension", "12px"], ["ob.component.modal-label-spacing", "dimension", "12px"], ["ob.component.modal-icon-size", "dimension", "40px"], ["ob.component.tooltip-icon-size", "dimension", "40px"], ["ob.component.tooltip-size", "dimension", "48px"], ["ob.component.tooltip-label-spacing", "dimension", "12px"], ["ob.component.tooltip-border-radius", "dimension", "6px"], ["ob.component.card-leading-icon-size", "dimension", "16px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.slider-regular-thumb-border-width", "dimension", "0px"], ["ob.component.slider-enhanced-thumb-border-size", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "6px"], ["ob.component.tag-icon-size", "dimension", "24px"], ["ob.component.tag-label-spacing", "dimension", "6px"], ["ob.component.tag-padding-horizontal", "dimension", "8px"], ["ob.component.tag-visual-target", "dimension", "32px"], ["ob.component.tag-border-radius", "dimension", "6px"], ["ob.component.tag-visual-target-large", "dimension", "48px"], ["ob.component.tag-padding-horizontal-large", "dimension", "8px"], ["ob.component.tag-icon-size-large", "dimension", "40px"], ["ob.component.tooltip-padding-horizontal", "dimension", "12px"]], "primitiver/storrelse/xl": [["ob.size.touch-target-min", "dimension", "96px"], ["ob.size.visual-target-min", "dimension", "72px"], ["ob.size.icon-size-regular", "dimension", "48px"], ["ob.size.border-weight-focusframe", "dimension", "4px"], ["ob.size.list-item-padding-horizontal", "dimension", "32px"], ["ob.size.list-item-item-spacing", "dimension", "16px"], ["ob.component.button-label-spacing", "dimension", "16px"], ["ob.component.button-stroke-weight", "dimension", "1px"], ["ob.component.toggle-switch-thumb-size", "dimension", "24px"], ["ob.component.toggle-switch-selection-padding", "dimension", "12px"], ["ob.component.toggle-switch-selection-width", "dimension", "96px"], ["ob.component.toggle-switch-item-border-radius", "dimension", "1000px"], ["ob.component.checkbox-visual-target-size", "dimension", "48px"], ["ob.component.checkbox-border-radius", "dimension", "8px"], ["ob.component.checkbox-label-spacing", "dimension", "16px"], ["ob.component.badge-border-radius", "dimension", "4px"], ["ob.component.navigation-item-icon-size", "dimension", "48px"], ["ob.component.navigation-item-label-spacing", "dimension", "16px"], ["ob.component.navigation-item-touch-target-size", "dimension", "96px"], ["ob.component.navigation-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-switch-selection-height", "dimension", "48px"], ["ob.component.icon-button-icon-size", "dimension", "48px"], ["ob.component.badge-padding", "dimension", "4px"], ["ob.component.navigation-item-border-radius", "dimension", "12px"], ["ob.component.radio-button-selection-size", "dimension", "48px"], ["ob.component.radio-button-thumb-size", "dimension", "16px"], ["ob.component.button-visual-size", "dimension", "72px"], ["ob.component.context-menu-menu-width", "dimension", "480px"], ["ob.component.button-border-radius", "dimension", "12px"], ["ob.component.card-border-radius-regular", "dimension", "12px"], ["ob.component.button-touch-target-size", "dimension", "96px"], ["ob.component.button-icon-size", "dimension", "48px"], ["ob.component.icon-button-visual-target-size", "dimension", "72px"], ["ob.component.input-fields-text-input-field-visual-size", "dimension", "72px"], ["ob.component.input-fields-text-input-field-border-radius", "dimension", "12px"], ["ob.component.toggle-button-toggle-button-item-touch-target-size", "dimension", "96px"], ["ob.component.toggle-button-toggle-button-item-visual-size", "dimension", "72px"], ["ob.component.toggle-button-toggle-button-item-label-spacing", "dimension", "16px"], ["ob.component.toggle-button-toggle-button-item-padding-horizontal", "dimension", "8px"], ["ob.component.toggle-button-toggle-button-item-border-radius", "dimension", "12px"], ["ob.component.input-fields-text-input-field-padding-horizontal", "dimension", "16px"], ["ob.component.topbar-icon-size", "dimension", "48px"], ["ob.component.table-item-touch-target-size", "dimension", "96px"], ["ob.component.table-item-padding-horizontal", "dimension", "8px"], ["ob.component.table-item-border-radius", "dimension", "12px"], ["ob.component.slider-touch-target-size", "dimension", "96px"], ["ob.component.slider-regular-thumb-height", "dimension", "48px"], ["ob.component.slider-border-radius", "dimension", "12px"], ["ob.component.slider-regular-track-height", "dimension", "16px"], ["ob.component.context-menu-border-radius", "dimension", "24px"], ["ob.component.context-menu-margin-vertical", "dimension", "8px"], ["ob.component.slider-regular-thumb-width", "dimension", "18px"], ["ob.component.slider-enhanced-track-height", "dimension", "64px"], ["ob.component.topbar-label-spacing", "dimension", "16px"], ["ob.component.topbar-touch-target-size", "dimension", "96px"], ["ob.component.topbar-margin-global", "dimension", "8px"], ["ob.component.navigation-menu-margin-vertical", "dimension", "8px"], ["ob.component.badge-min-size-large", "dimension", "48px"], ["ob.component.modal-margin-vertical", "dimension", "48px"], ["ob.component.modal-title-container-height", "dimension", "96px"], ["ob.component.modal-button-spacing", "dimension", "16px"], ["ob.component.modal-border-radius", "dimension", "24px"], ["ob.component.modal-padding-vertical-button-container", "dimension", "16px"], ["ob.component.navigation-menu-footer-margin-horizontal", "dimension", "8px"], ["ob.component.tab-item-touch-target-size", "dimension", "96px"], ["ob.component.tab-item-icon-size", "dimension", "48px"], ["ob.component.tab-item-label-spacing", "dimension", "16px"], ["ob.component.tab-item-padding-horizontal", "dimension", "32px"], ["ob.component.divider-height-small", "dimension", "32px"], ["ob.component.table-header-item-padding-horizontal", "dimension", "16px"], ["ob.component.modal-label-spacing", "dimension", "16px"], ["ob.component.modal-icon-size", "dimension", "48px"], ["ob.component.tooltip-icon-size", "dimension", "48px"], ["ob.component.tooltip-size", "dimension", "64px"], ["ob.component.tooltip-label-spacing", "dimension", "16px"], ["ob.component.tooltip-border-radius", "dimension", "8px"], ["ob.component.card-leading-icon-size", "dimension", "8px"], ["ob.component.card-padding", "dimension", "8px"], ["ob.component.card-heading-container-height", "dimension", "32px"], ["ob.component.card-gap", "dimension", "4px"], ["ob.component.slider-regular-thumb-border-width", "dimension", "0px"], ["ob.component.slider-enhanced-thumb-border-size", "dimension", "4px"], ["ob.component.input-fields-text-input-field-vertical-spacer", "dimension", "8px"], ["ob.component.tag-icon-size", "dimension", "32px"], ["ob.component.tag-label-spacing", "dimension", "8px"], ["ob.component.tag-padding-horizontal", "dimension", "12px"], ["ob.component.tag-visual-target", "dimension", "48px"], ["ob.component.tag-border-radius", "dimension", "8px"], ["ob.component.tag-visual-target-large", "dimension", "64px"], ["ob.component.tag-padding-horizontal-large", "dimension", "12px"], ["ob.component.tag-icon-size-large", "dimension", "48px"], ["ob.component.tooltip-padding-horizontal", "dimension", "16px"]], "primitiver/felles": [["ob.border-radius.2", "borderRadius", "2"], ["ob.border-radius.6", "borderRadius", "6"]]};
 
 // Enkle, generiske ikoner (24×24) tegnet for pluginet. Bytt dem gjerne ut med
 // OpenBridge-ikoner i Penpot – komponentene beholder fargekoblingen.
@@ -149,6 +180,10 @@ const IKON = {
   hjem: 'M12 4 3 11h2v8h5v-5h4v5h5v-8h2z',
   merkelapp: 'M3 5v6l9 9 7-7-9-9H4zm4 1.5A1.5 1.5 0 1 1 7 9.5a1.5 1.5 0 0 1 0-3z',
   pil: 'M0 0h12L6 6z',
+  ned: 'M7 10l5 5 5-5z',
+  app: 'M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z',
+  innstillinger: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm-1-6h2v3h-2zm0 17h2v3h-2zM2 11h3v2H2zm17 0h3v2h-3z',
+  lukk: 'M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6z',
 };
 const svg = (d) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="${d}" fill="#000000"/></svg>`;
 
@@ -951,6 +986,379 @@ function byggKort(V, medTittel) {
   return kort;
 }
 
+// ------------------------------------------------------------------ runde 4
+/** Liten ikonknapp (flat) til bruk inni sammensatte komponenter. */
+function flatIkonknapp(V, navn, sti) {
+  const w = V.boks(navn, { b: 48, h: 48, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(w, 'button.height', ['width', 'height']);
+  const f = V.boks('Flate', { b: 32, h: 32, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(f, 'icon-button.visual-size', ['width', 'height']);
+  V.flate(f, { fyll: 'color.control.flat.enabled-background', kant: 'color.control.flat.enabled-border', radius: 'button.border-radius' });
+  V.leggTil(f, V.ikon('Ikon', sti, 'icon-button.icon-size', 'color.control.flat.on-neutral'));
+  V.leggTil(w, f);
+  return w;
+}
+
+/** Enkel knapp (uten ikon) i en gitt OpenBridge-variant. */
+function enkelKnapp(V, tekst, variant, fyllBredde = false) {
+  const S = `color.control.${variant}`;
+  const w = V.boks('Knapp', { b: 96, h: 48, sizingV: 'fix' });
+  V.bind(w, 'button.height', ['height']);
+  const f = V.boks('Flate', { b: 80, h: 32, sizingV: 'fix' });
+  V.bind(f, 'button.visual-height', ['height']);
+  V.bind(f, 'button.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(f, { fyll: `${S}.enabled-background`, kant: `${S}.enabled-border`, radius: 'button.border-radius' });
+  const t = V.tekst(tekst, 'typography.ui.button', `${S}.on-active`);
+  if (t) V.leggTil(f, t);
+  V.leggTil(w, f);
+  if (fyllBredde) { V.fyllBredde(f); }
+  return w;
+}
+
+function skillelinje(V, vertikal = true) {
+  const d = V.boks('Skillelinje', { b: vertikal ? 1 : 100, h: vertikal ? 16 : 1, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.flate(d, { fyll: 'color.neutral.border-subtle' });
+  if (vertikal) {
+    V.bind(d, 'divider.width', ['width']);
+    V.bind(d, 'divider.height-small', ['height']);
+  }
+  return d;
+}
+
+/** Vannrett skillelinje i full bredde (1 px). */
+function linje(V, farge = 'color.neutral.border-subtle') {
+  const l = V.boks('Skillelinje', { b: 100, h: 1, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.flate(l, { fyll: farge });
+  V.bind(l, 'divider.width', ['height']);
+  V.fyllBredde(l);
+  return l;
+}
+
+const MENYVALG_TILSTANDER = ['enabled', 'hover', 'pressed', 'disabled'];
+
+Object.assign(KOMPONENTER, {
+  toppfelt: {
+    navn: 'Toppfelt',
+    egenskaper: ['Alarm', 'Aktiv'],
+    kombinasjoner() {
+      const ut = [];
+      [['ja', 'Ja'], ['nei', 'Nei']].forEach(([aktiv, aNavn], rad) => {
+        [['nei', 'Nei'], ['ja', 'Ja']].forEach(([alarm, alNavn], kol) => {
+          ut.push({ verdier: [alNavn, aNavn], rad, kol, bygg: (V) => byggToppfelt(V, alarm === 'ja', aktiv === 'ja') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 1000,
+    radhoyde: 96,
+  },
+  navigasjonsmeny: {
+    navn: 'Navigasjonsmeny',
+    egenskaper: ['Bredde'],
+    kombinasjoner() {
+      return [['full', 'Full'], ['ikoner', 'Kun ikoner']].map(([b, bNavn], kol) => ({ verdier: [bNavn], rad: 0, kol, bygg: (V) => byggNavmeny(V, b === 'ikoner') }));
+    },
+    kolonne: 380,
+  },
+  dialog: {
+    navn: 'Dialogvindu',
+    egenskaper: ['Størrelse'],
+    kombinasjoner() {
+      return [['small', 'Liten'], ['medium', 'Middels'], ['large', 'Stor']].map(([s, sNavn], kol) => ({ verdier: [sNavn], rad: 0, kol, bygg: (V) => byggDialog(V, s) }));
+    },
+    kolonne: 600,
+  },
+  tabellrad: {
+    navn: 'Tabellrad',
+    egenskaper: ['Type'],
+    kombinasjoner() {
+      return [['header', 'Overskrift'], ['enabled', 'Hvile'], ['hover', 'Hover'], ['pressed', 'Trykket'], ['selected', 'Valgt'], ['striped', 'Stripet'], ['disabled', 'Deaktivert']]
+        .map(([t, tNavn], rad) => ({ verdier: [tNavn], rad, kol: 0, bygg: (V) => byggTabellrad(V, t) }));
+    },
+    radhoyde: 64,
+  },
+  glidebryter: {
+    navn: 'Glidebryter',
+    egenskaper: ['Variant', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      [['regular', 'Vanlig'], ['enhanced', 'Forsterket']].forEach(([v, vNavn], rad) => {
+        [['enabled', 'Hvile'], ['disabled', 'Deaktivert']].forEach(([t, tNavn], kol) => {
+          ut.push({ verdier: [vNavn, tNavn], rad, kol, bygg: (V) => byggGlidebryter(V, v === 'enhanced', t === 'disabled') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 300,
+    radhoyde: 72,
+  },
+  nedtrekk: {
+    navn: 'Nedtrekksknapp',
+    egenskaper: ['Variant', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      [['normal', 'Normal'], ['flat', 'Flat']].forEach(([v, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggNedtrekk(V, v, t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 200,
+  },
+  menyvalg: {
+    navn: 'Menyvalg',
+    egenskaper: ['Valgt', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      VALGT.forEach(([v, vNavn], rad) => {
+        MENYVALG_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggMenyvalg(V, v === 'ja', t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 240,
+  },
+  meny: {
+    navn: 'Meny',
+    egenskaper: [],
+    kombinasjoner() {
+      return [{ verdier: [], rad: 0, kol: 0, bygg: (V) => byggMeny(V) }];
+    },
+  },
+});
+
+function byggToppfelt(V, alarm, aktiv) {
+  const topp = V.boks('Toppfelt', { b: 960, h: 48, sizingH: 'fix', sizingV: 'fix', justify: 'space-between' });
+  V.bind(topp, 'topbar.height', ['height']);
+  V.bind(topp, 'topbar.padding-inline', ['paddingLeft', 'paddingRight']);
+  if (aktiv) {
+    V.flate(topp, { fyll: 'color.neutral.surface-default' });
+    V.bind(topp, 'shadow.xs', ['shadow']);
+  }
+  const venstre = V.boks('Venstre', { b: 400, h: 48, justify: 'start' });
+  V.bind(venstre, 'topbar.gap', ['columnGap']);
+  V.leggTil(venstre, flatIkonknapp(V, 'Meny', IKON.meny));
+  V.leggTil(venstre, V.ikon('App-ikon', IKON.app, 'topbar.icon-size', 'color.neutral.text-subtle'));
+  const tittel = V.tekst('Maritim app', 'typography.ui.body', 'color.neutral.text-default', 'Tittel');
+  if (tittel) V.leggTil(venstre, tittel);
+  V.leggTil(venstre, skillelinje(V));
+  const side = V.tekst('Oversikt', 'typography.ui.body-active', 'color.neutral.text-default', 'Sidenavn');
+  if (side) V.leggTil(venstre, side);
+  V.leggTil(topp, venstre);
+
+  const hoyre = V.boks('Høyre', { b: 300, h: 48, justify: 'end' });
+  V.bind(hoyre, 'topbar.gap', ['columnGap']);
+  if (alarm) {
+    const chip = V.boks('Alarm', { b: 96, h: 32, sizingV: 'fix' });
+    V.bind(chip, 'icon-button.visual-size', ['height']);
+    V.bind(chip, 'button.padding-inline', ['paddingLeft', 'paddingRight']);
+    V.bind(chip, 'topbar.gap', ['columnGap']);
+    V.flate(chip, { fyll: 'color.alert.alarm', kant: 'color.alert.alarm-outline', kantbredde: 'border-width.default', radius: 'button.border-radius' });
+    V.leggTil(chip, V.ikon('Ikon', IKON.utrop, 'topbar.icon-size', 'color.on.alarm'));
+    const t = V.tekst('1 alarm', 'typography.ui.body-active', 'color.on.alarm');
+    if (t) V.leggTil(chip, t);
+    V.leggTil(hoyre, chip);
+  }
+  const klokke = V.tekst('12:04', 'typography.ui.body-active', 'color.neutral.text-default', 'Klokke');
+  if (klokke) V.leggTil(hoyre, klokke);
+  V.leggTil(hoyre, flatIkonknapp(V, 'Innstillinger', IKON.innstillinger));
+  V.leggTil(topp, hoyre);
+  return topp;
+}
+
+function navRad(V, tekst, sti, valgt, kunIkon) {
+  const S = `color.control.${valgt ? 'amplified' : 'flat'}`;
+  const r = V.boks('Navigasjonselement', { b: kunIkon ? 48 : 304, h: 48, sizingH: 'fix', sizingV: 'fix', justify: kunIkon ? 'center' : 'start' });
+  V.bind(r, 'nav.height', kunIkon ? ['height', 'width'] : ['height']);
+  if (!kunIkon) {
+    V.bind(r, 'nav.padding-inline', ['paddingLeft', 'paddingRight']);
+    V.bind(r, 'nav.gap', ['columnGap']);
+  }
+  V.flate(r, { fyll: `${S}.enabled-background`, kant: `${S}.enabled-border`, radius: 'nav.border-radius' });
+  V.leggTil(r, V.ikon('Ikon', sti, 'nav.icon-size', `${S}.on-neutral`));
+  if (!kunIkon) {
+    const t = V.tekst(tekst, 'typography.ui.body', `${S}.on-active`, 'Etikett');
+    if (t) V.leggTil(r, t);
+  }
+  if (!kunIkon) V.fyllBredde(r);
+  return r;
+}
+
+function byggNavmeny(V, kunIkon) {
+  const meny = V.boks('Navigasjonsmeny', { dir: 'column', b: kunIkon ? 56 : 320, h: 480, sizingH: kunIkon ? 'auto' : 'fix', sizingV: 'fix', align: 'stretch', justify: 'space-between' });
+  if (!kunIkon) V.bind(meny, 'navmenu.width', ['width']);
+  V.flate(meny, { fyll: 'color.neutral.surface-default' });
+  V.bind(meny, 'shadow.xs', ['shadow']);
+  const hoved = V.boks('Hoved', { dir: 'column', b: 320, h: 300, align: 'stretch', justify: 'start' });
+  V.bind(hoved, 'navmenu.padding-block', ['paddingTop', 'paddingBottom']);
+  V.bind(hoved, 'navmenu.padding-inline', ['paddingLeft', 'paddingRight']);
+  [['Oversikt', IKON.hjem, true], ['Navigasjon', IKON.app, false], ['Maskin', IKON.innstillinger, false], ['Alarmer', IKON.utrop, false], ['Meldinger', IKON.info, false]]
+    .forEach(([t, sti, valgt]) => V.leggTil(hoved, navRad(V, t, sti, valgt, kunIkon)));
+  V.leggTil(meny, hoved);
+  const fot = V.boks('Bunn', { dir: 'column', b: 320, h: 64, align: 'stretch', justify: 'start' });
+  V.bind(fot, 'navmenu.padding-block', ['paddingTop', 'paddingBottom']);
+  V.bind(fot, 'navmenu.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.leggTil(meny, linje(V, 'color.neutral.border-default'));
+  V.leggTil(fot, navRad(V, 'Innstillinger', IKON.innstillinger, false, kunIkon));
+  V.leggTil(meny, fot);
+  return meny;
+}
+
+function byggDialog(V, storrelse) {
+  const bredde = storrelse === 'small' ? 349 : 540;
+  const d = V.boks('Dialogvindu', { dir: 'column', b: bredde, h: 240, sizingH: 'fix', align: 'stretch', justify: 'start' });
+  V.flate(d, { fyll: 'color.neutral.background-default', radius: 'modal.border-radius' });
+  V.bind(d, 'shadow.md', ['shadow']);
+
+  const tittel = V.boks('Tittel', { b: bredde, h: 48, sizingV: 'fix', justify: 'space-between' });
+  V.bind(tittel, 'modal.title-height', ['height']);
+  V.bind(tittel, 'modal.padding-inline', ['paddingLeft']);
+  const venstre = V.boks('Tittelinnhold', { b: 200, h: 24 });
+  V.bind(venstre, 'modal.gap', ['columnGap']);
+  V.leggTil(venstre, V.ikon('Ikon', IKON.info, 'modal.icon-size', 'color.neutral.text-subtle'));
+  const tt = V.tekst('DIALOGTITTEL', 'typography.ui.overline', 'color.neutral.text-default');
+  if (tt) V.leggTil(venstre, tt);
+  V.leggTil(tittel, venstre);
+  V.leggTil(tittel, flatIkonknapp(V, 'Lukk', IKON.lukk));
+  V.leggTil(d, tittel);
+  V.leggTil(d, linje(V));
+
+  const innhold = V.boks('Innhold', { b: bredde, h: 96, align: 'start', justify: 'start' });
+  V.bind(innhold, 'modal.padding-inline', ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom']);
+  const ti = V.tekst('Innholdet i dialogen kommer her.', 'typography.ui.body', 'color.neutral.text-default');
+  if (ti) V.leggTil(innhold, ti);
+  V.leggTil(d, innhold);
+  V.leggTil(d, linje(V));
+
+  // OpenBridge: små og middels dialoger har knapper i full bredde, store er høyrejustert
+  const handling = V.boks('Handlinger', { dir: storrelse === 'small' ? 'column' : 'row', b: bredde, h: 64, align: 'stretch', justify: storrelse === 'large' ? 'end' : 'start' });
+  V.bind(handling, 'modal.actions-padding-block', ['paddingTop', 'paddingBottom']);
+  V.bind(handling, 'modal.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.bind(handling, storrelse === 'small' ? 'modal.button-gap' : 'modal.button-gap', [storrelse === 'small' ? 'rowGap' : 'columnGap']);
+  const avbryt = enkelKnapp(V, 'Avbryt', 'flat', storrelse !== 'large');
+  const ok = enkelKnapp(V, 'Bekreft', 'raised', storrelse !== 'large');
+  V.leggTil(handling, avbryt);
+  V.leggTil(handling, ok);
+  if (storrelse !== 'large') { V.fyllBredde(avbryt); V.fyllBredde(ok); }
+  V.leggTil(d, handling);
+  return d;
+}
+
+function byggTabellrad(V, type) {
+  const header = type === 'header';
+  const sett = type === 'selected' ? 'amplified' : 'flat';
+  const tilstand = ['header', 'striped', 'selected'].includes(type) ? 'enabled' : type;
+  const deaktivert = type === 'disabled';
+  const rad = V.boks('Tabellrad', { b: 560, h: 48, sizingH: 'fix', sizingV: 'fix', justify: 'start' });
+  V.bind(rad, 'table.row-height', ['height']);
+  V.bind(rad, header ? 'table.header-padding-inline' : 'table.padding-inline', ['paddingLeft', 'paddingRight']);
+  if (header) {
+    V.flate(rad, { kant: 'color.neutral.border-subtle', kantbredde: 'border-width.default' });
+  } else if (type === 'striped') {
+    V.flate(rad, { fyll: 'color.neutral.surface-tinted', radius: 'table.border-radius' });
+  } else {
+    V.flate(rad, { fyll: `color.control.${sett}.${tilstand}-background`, kant: `color.control.${sett}.${tilstand}-border`, radius: 'table.border-radius' });
+  }
+  const celler = header ? ['Utstyr', 'Status', 'Verdi'] : ['Hovedmotor 1', 'I drift', '82 %'];
+  const bredder = [240, 160, 120];
+  celler.forEach((c, i) => {
+    const celle = V.boks('Celle', { b: bredder[i], h: 24, sizingH: 'fix', justify: 'start' });
+    const farge = header ? 'color.neutral.text-subtle' : deaktivert ? `color.control.${sett}.on-disabled` : `color.control.${sett}.on-active`;
+    const t = V.tekst(c, header ? 'typography.ui.label-active' : type === 'selected' ? 'typography.ui.body-active' : 'typography.ui.body', farge);
+    if (t) V.leggTil(celle, t);
+    V.leggTil(rad, celle);
+  });
+  return rad;
+}
+
+function byggGlidebryter(V, forsterket, deaktivert) {
+  const B = 240;
+  const g = V.boks('Glidebryter', { b: B, h: 48, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.bind(g, 'slider.height', ['height']);
+  const plasser = (fig, x, b, h) => {
+    V.leggTil(g, fig);
+    fig.x = g.x + x;
+    fig.y = g.y + (48 - h) / 2;
+    fig.constraintsVertical = 'center';
+  };
+  // Spor
+  const sporH = forsterket ? 32 : 4;
+  const spor = V.boks('Spor', { b: B - 36, h: sporH, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.bind(spor, forsterket ? 'slider.enhanced-track-height' : 'slider.track-height', ['height']);
+  if (forsterket) {
+    V.flate(spor, { fyll: `color.control.indent.${deaktivert ? 'disabled' : 'enabled'}-background`, kant: `color.control.indent.${deaktivert ? 'disabled' : 'enabled'}-border`, kantbredde: 'border-width.default', radius: 'slider.border-radius' });
+  } else {
+    V.flate(spor, { fyll: deaktivert ? 'color.control.flat.disabled-background' : 'color.neutral.border-default', radius: 'slider.border-radius' });
+  }
+  plasser(spor, 18, B - 36, sporH);
+  // Aktiv del av sporet (60 %)
+  const aktivB = Math.round((B - 36) * 0.6);
+  const aktiv = V.boks('Verdi', { b: aktivB, h: sporH, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.bind(aktiv, forsterket ? 'slider.enhanced-track-height' : 'slider.track-height', ['height']);
+  V.flate(aktiv, { fyll: `color.control.selected.${deaktivert ? 'disabled' : 'enabled'}-background`, radius: 'slider.border-radius' });
+  plasser(aktiv, 18, aktivB, sporH);
+  // Håndtak
+  const handtak = V.boks('Håndtak', { b: 12, h: 32, sizingH: 'fix', sizingV: 'fix', layout: false });
+  V.bind(handtak, 'slider.thumb-width', ['width']);
+  V.bind(handtak, 'slider.thumb-height', ['height']);
+  if (forsterket) {
+    V.flate(handtak, { fyll: 'color.neutral.background-default', kant: `color.control.selected.${deaktivert ? 'disabled' : 'enabled'}-background`, kantbredde: 'slider.enhanced-thumb-border', radius: 'slider.border-radius' });
+  } else {
+    V.flate(handtak, { fyll: `color.control.selected.${deaktivert ? 'disabled' : 'enabled'}-background`, kant: 'color.neutral.background-default', kantbredde: 'slider.thumb-border', radius: 'slider.border-radius' });
+  }
+  plasser(handtak, 18 + aktivB - 6, 12, 32);
+  return g;
+}
+
+function byggNedtrekk(V, variant, t) {
+  const S = `color.control.${variant}`;
+  const deaktivert = t === 'disabled';
+  const w = V.boks('Nedtrekksknapp', { b: 160, h: 48, sizingV: 'fix' });
+  V.bind(w, 'button.height', ['height']);
+  const f = V.boks('Flate', { b: 160, h: 32, sizingV: 'fix' });
+  V.bind(f, 'button.visual-height', ['height']);
+  V.bind(f, 'button.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(f, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'button.border-radius', fokus: t === 'focused' });
+  const etikett = V.boks('Etikett', { b: 60, h: 24 });
+  V.bind(etikett, 'button.label-padding', ['paddingLeft', 'paddingRight']);
+  const tx = V.tekst('Velg', 'typography.ui.button', `${S}.${deaktivert ? 'on-disabled' : 'on-active'}`);
+  if (tx) V.leggTil(etikett, tx);
+  V.leggTil(f, etikett);
+  V.leggTil(f, V.ikon('Pil', IKON.ned, 'button.icon-size', `${S}.${deaktivert ? 'on-disabled' : 'on-neutral'}`));
+  V.leggTil(w, f);
+  return w;
+}
+
+function byggMenyvalg(V, valgt, t) {
+  // OpenBridge: valg = flat, valgt (checked) = amplified
+  const S = `color.control.${valgt ? 'amplified' : 'flat'}`;
+  const r = V.boks('Menyvalg', { b: 200, h: 48, sizingH: 'fix', sizingV: 'fix', justify: 'start' });
+  V.bind(r, 'nav.height', ['height']);
+  V.bind(r, 'nav.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(r, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'nav.border-radius' });
+  const tx = V.tekst('Valg', valgt ? 'typography.ui.body-active' : 'typography.ui.body', `${S}.${t === 'disabled' ? 'on-disabled' : 'on-active'}`, 'Etikett');
+  if (tx) V.leggTil(r, tx);
+  return r;
+}
+
+function byggMeny(V) {
+  const m = V.boks('Meny', { dir: 'column', b: 200, h: 200, sizingH: 'fix', align: 'stretch', justify: 'start' });
+  V.bind(m, 'menu.width', ['width']);
+  V.bind(m, 'menu.padding', ['paddingTop', 'paddingBottom', 'paddingLeft', 'paddingRight']);
+  V.flate(m, { fyll: 'color.neutral.surface-default', radius: 'menu.border-radius' });
+  V.bind(m, 'shadow.md', ['shadow']);
+  ['Alternativ 1', 'Alternativ 2', 'Alternativ 3', 'Alternativ 4'].forEach((t, i) => {
+    const valg = byggMenyvalg(V, i === 1, 'enabled');
+    const tekst = valg.children?.find?.((c) => c.name === 'Etikett');
+    if (tekst) tekst.characters = t;
+    V.leggTil(m, valg);
+    V.fyllBredde(valg);
+  });
+  return m;
+}
+
 // ================================================================== generering
 async function generer(id) {
   const def = KOMPONENTER[id];
@@ -983,6 +1391,14 @@ async function generer(id) {
   await vent(400);
 
   const [forste, ...resten] = hoveder;
+  if (!resten.length) {
+    // Bare én variant: en vanlig komponent, ingen varianter å slå sammen
+    forste.name = def.navn;
+    const komp = forste.component();
+    if (komp) komp.name = def.navn;
+    if (V.feil.length) logg(`${def.navn}: ${V.feil.length} token-koblinger feilet`, 'feil');
+    return { navn: def.navn, antall: 1, feil: V.feil.length, beholder: forste };
+  }
   const beholder = forste.combineAsVariants(resten.map((h) => h.id));
   await vent(800);
   if (beholder) beholder.name = def.navn;

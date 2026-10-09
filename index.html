@@ -87,7 +87,7 @@
         navn.textContent = k.navn;
         navn.id = 'navn-' + k.id;
         const detaljer = document.createElement('small');
-        detaljer.textContent = `${k.antall} varianter · ${k.egenskaper.join(' × ')}`;
+        detaljer.textContent = k.egenskaper.length ? `${k.antall} varianter · ${k.egenskaper.join(' × ')}` : 'Én komponent';
         info.append(navn, detaljer);
         const knapp = document.createElement('button');
         knapp.textContent = 'Generer';
