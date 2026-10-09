@@ -15,7 +15,7 @@ Penpot lagrer manifestet når pluginet installeres, og nettleseren mellomlagrer 
 For å få en ny versjon med en gang: avinstaller pluginet og installer det med versjonsnummeret i adressen, slik:
 
 ```
-https://larsiveg-jpg.github.io/maritim-da-plugin/manifest.json?v=0.4.0/manifest.json
+https://larsiveg-jpg.github.io/maritim-da-plugin/manifest.json?v=0.5.0/manifest.json
 ```
 
 Adressen må slutte på `manifest.json`, ellers legger Penpot til en ekstra `/manifest.json` og finner ikke pluginet.
@@ -48,6 +48,7 @@ Versjonsnummeret står nederst i pluginvinduet.
 | Nedtrekksknapp | 10 | Variant (Normal, Flat) × Tilstand |
 | Menyvalg | 8 | Valgt (Nei, Ja) × Tilstand |
 | Meny | 1 | Nedtrekks- og kontekstmeny med fire valg |
+| Kontekstmeny | 12 | Type (Vanlig, Avkrysning, Nestet avkrysning, Utfelling, Flere kolonner, Kolonner med undertitler) × Tittel (Med, Uten). Etter OpenBridge `context-menu-input` |
 
 Tilstander: Hvile, Hover, Trykket, Fokus, Deaktivert, og Aktivert der OpenBridge har det.
 
@@ -66,6 +67,7 @@ Regler og mål følger OpenBridge sine web-komponenter (`button`, `icon-button`,
 
 ## Versjoner
 
+- **0.5.0:** Kontekstmeny med alle seks typene fra OpenBridge `context-menu-input`.
 - **0.4.0:** Toppfelt, navigasjonsmeny, dialogvindu, tabellrad, glidebryter, nedtrekksknapp, menyvalg og meny.
 - **0.3.1:** Pluginet legger selv til primitiver som mangler i filer importert med en eldre token-fil, og stopper ikke lenger hvis ett token ikke kan lages.
 - **0.3.0:** Tag, teller, statusindikator, verktøytips, fane, segmentvalg, navigasjonselement og kort.
