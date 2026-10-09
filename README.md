@@ -11,9 +11,9 @@ Lager OpenBridge-komponenter i Designsystemet-struktur i Penpot, bundet til desi
 
 ## Oppdatere pluginet
 
-GitHub Pages lar nettleseren mellomlagre filene i opptil 10 minutter. Hvis Penpot fortsatt viser gammel versjon:
-vent 10 minutter, eller avinstaller pluginet og installer det igjen med et nytt tall på slutten av adressen,
-f.eks. `…/manifest.json?v=2`. Manifestet peker til `plugin.js?v=<versjon>`, så hver ny versjon hentes som en ny fil.
+Manifestet peker til `plugin.js?v=<versjon>`, og versjonsnummeret økes ved hver utgivelse. Penpot henter derfor alltid den nye filen.
+Hvis Penpot likevel viser en gammel versjon, skyldes det at nettleseren har mellomlagret manifestet. Det varer i opptil 10 minutter.
+Lukk og åpne pluginet etter at tiden har gått. **Ikke** legg til noe etter `manifest.json` i adressen, for da finner ikke Penpot pluginet.
 
 ## Innhold
 
