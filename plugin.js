@@ -5,54 +5,73 @@
  * tokenene fra penpot-tokens.json. Komponentene følger derfor med når du bytter
  * Palett (Dag/Skumring/Natt/Sterkt lys) eller Størrelse (Regular … XL).
  *
- * Regler og mål: OpenBridge (button.css i @oicl/openbridge-webcomponents 2.0.0)
+ * Regler og mål: OpenBridge (@oicl/openbridge-webcomponents 2.0.0)
  * Struktur og navngiving: Designsystemet (semantiske tokens, komponent-tokens)
  */
 
-const VERSJON = '0.1.0';
+const VERSJON = '0.2.0';
 
-// ------------------------------------------------------------------ oppsett
-// Komponent-tokens (Designsystemets tredje lag). Opprettes automatisk hvis
-// token-filen ble importert før de fantes.
+// ================================================================== tokens
+// Komponent-tokens (Designsystemets tredje lag). Opprettes automatisk i settet
+// «semantikk/komponent» hvis token-filen ble importert før de fantes.
+// Holdes i takt med scripts/bygg-tokens.mjs (testen sjekker det).
 const KOMPONENT_SETT = 'semantikk/komponent';
 const KOMPONENT_TOKENS = [
-  ['button.height', 'sizing', '{ob.component.button-touch-target-size}'],
-  ['button.min-width', 'sizing', '{ob.component.button-touch-target-size}'],
-  ['button.visual-height', 'sizing', '{ob.component.button-visual-size}'],
-  ['button.padding-inline', 'spacing', '{ob.component.button-label-spacing}'],
-  ['button.label-padding', 'spacing', '{ob.component.button-label-spacing}'],
-  ['button.icon-size', 'sizing', '{ob.component.button-icon-size}'],
-  ['button.border-radius', 'borderRadius', '{ob.component.button-border-radius}'],
-  ['button.border-width', 'borderWidth', '{ob.component.button-stroke-weight}'],
-  ['focus.width', 'borderWidth', '{ob.size.border-weight-focusframe}'],
+  ["button.height", "sizing", "{ob.component.button-touch-target-size}"],
+  ["button.min-width", "sizing", "{ob.component.button-touch-target-size}"],
+  ["button.visual-height", "sizing", "{ob.component.button-visual-size}"],
+  ["button.padding-inline", "spacing", "{ob.component.button-label-spacing}"],
+  ["button.label-padding", "spacing", "{ob.component.button-label-spacing}"],
+  ["button.icon-size", "sizing", "{ob.component.button-icon-size}"],
+  ["button.border-radius", "borderRadius", "{ob.component.button-border-radius}"],
+  ["button.border-width", "borderWidth", "{ob.component.button-stroke-weight}"],
+  ["focus.width", "borderWidth", "{ob.size.border-weight-focusframe}"],
+  ["icon-button.visual-size", "sizing", "{ob.component.icon-button-visual-target-size}"],
+  ["icon-button.icon-size", "sizing", "{ob.component.icon-button-icon-size}"],
+  ["control.height", "sizing", "{ob.size.touch-target-min}"],
+  ["control.label-spacing", "spacing", "{ob.component.checkbox-label-spacing}"],
+  ["toggle.width", "sizing", "{ob.component.toggle-switch-selection-width}"],
+  ["toggle.height", "sizing", "{ob.component.toggle-switch-selection-height}"],
+  ["toggle.padding", "spacing", "{ob.component.toggle-switch-selection-padding}"],
+  ["toggle.thumb-size", "sizing", "{ob.component.toggle-switch-thumb-size}"],
+  ["toggle.border-radius", "borderRadius", "{ob.component.toggle-switch-item-border-radius}"],
+  ["checkbox.size", "sizing", "{ob.component.checkbox-visual-target-size}"],
+  ["checkbox.border-radius", "borderRadius", "{ob.component.checkbox-border-radius}"],
+  ["radio.size", "sizing", "{ob.component.radio-button-selection-size}"],
+  ["radio.thumb-size", "sizing", "{ob.component.radio-button-thumb-size}"],
+  ["input.height", "sizing", "{ob.component.input-fields-text-input-field-visual-size}"],
+  ["input.padding-inline", "spacing", "{ob.component.input-fields-text-input-field-padding-horizontal}"],
+  ["input.border-radius", "borderRadius", "{ob.component.input-fields-text-input-field-border-radius}"],
+  ["input.gap", "spacing", "{ob.component.input-fields-text-input-field-vertical-spacer}"],
+  ["banner.height", "sizing", "{ob.size.touch-target-min}"],
+  ["banner.padding-inline", "spacing", "{ob.size.list-item-padding-horizontal}"],
+  ["banner.gap", "spacing", "{ob.size.list-item-item-spacing}"],
+  ["banner.badge-size", "sizing", "{ob.size.visual-target-min}"],
+  ["banner.icon-size", "sizing", "{ob.size.icon-size-regular}"],
+  ["banner.border-radius", "borderRadius", "{ob.border-radius.6}"],
+  ["color.neutral.text-disabled", "color", "{ob.element.disabled}"],
+  ["color.neutral.text-placeholder", "color", "{ob.element.inactive}"],
+  ["color.neutral.symbol", "color", "{ob.element.symbol}"],
 ];
 
-// OpenBridge-knappen: variant × tilstand × innhold
-const VARIANTER = [
-  { id: 'normal', navn: 'Normal' },
-  { id: 'raised', navn: 'Raised' },
-  { id: 'flat', navn: 'Flat' },
-];
-const TILSTANDER = [
-  { id: 'enabled', navn: 'Hvile' },
-  { id: 'hover', navn: 'Hover' },
-  { id: 'pressed', navn: 'Trykket' },
-  { id: 'focused', navn: 'Fokus' },
-  { id: 'disabled', navn: 'Deaktivert' },
-  { id: 'activated', navn: 'Aktivert', kunFor: ['normal', 'flat'] }, // finnes ikke for raised i OpenBridge
-];
-const INNHOLD = [
-  { id: 'tekst', navn: 'Tekst', ikon: false },
-  { id: 'ikon-tekst', navn: 'Ikon og tekst', ikon: true },
-];
-const EGENSKAPER = ['Variant', 'Tilstand', 'Innhold'];
+// Enkle, generiske ikoner (24×24) tegnet for pluginet. Bytt dem gjerne ut med
+// OpenBridge-ikoner i Penpot – komponentene beholder fargekoblingen.
+const IKON = {
+  pluss: 'M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z',
+  meny: 'M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z',
+  hake: 'M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L21 7.5l-1.4-1.4z',
+  strek: 'M6 11h12v2H6z',
+  utrop: 'M11 5h2v9h-2zm0 11h2v2h-2z',
+};
+const svg = (d) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="${d}" fill="#000000"/></svg>`;
 
-// Et enkelt, generisk plussikon (24×24). Bytt det ut med OpenBridge-ikoner i Penpot.
-const IKON_SVG =
-  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">' +
-  '<path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z" fill="#000000"/></svg>';
+// Felles tilstander (OpenBridge sine state-tokens)
+const TILSTAND = {
+  enabled: 'Hvile', hover: 'Hover', pressed: 'Trykket', focused: 'Fokus', disabled: 'Deaktivert', activated: 'Aktivert',
+};
+const KONTROLL_TILSTANDER = ['enabled', 'hover', 'pressed', 'focused', 'disabled'];
 
-// ------------------------------------------------------------------ hjelpere
+// ================================================================== hjelpere
 const vent = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function logg(tekst, nivaa = 'info') {
@@ -69,22 +88,10 @@ function tokenKart() {
   return kart;
 }
 
-/** Tokennavnene knappen trenger, for kontroll før generering. */
-function nodvendigeTokens() {
-  const navn = new Set(KOMPONENT_TOKENS.map(([n]) => n));
-  navn.add('typography.ui.button');
-  navn.add('color.focus.inner');
-  navn.add('color.focus.outer');
-  for (const v of VARIANTER) {
-    for (const t of TILSTANDER) {
-      if (t.kunFor && !t.kunFor.includes(v.id)) continue;
-      navn.add(`color.control.${v.id}.${t.id}-background`);
-      navn.add(`color.control.${v.id}.${t.id}-border`);
-    }
-    for (const r of ['on-active', 'on-neutral', 'on-disabled']) navn.add(`color.control.${v.id}.${r}`);
-  }
-  return [...navn];
-}
+const NOKKELTOKENS = [
+  'color.neutral.text-default', 'color.neutral.surface-default', 'color.control.normal.enabled-background',
+  'color.danger.base-default', 'color.focus.inner', 'typography.ui.body', 'typography.ui.button', 'border-radius.full',
+];
 
 function sjekk() {
   const katalog = penpot.library.local.tokens;
@@ -92,22 +99,22 @@ function sjekk() {
     return { ok: false, melding: 'Fant ingen tokens i denne filen. Importer penpot-tokens.json først.' };
   }
   const kart = tokenKart();
-  const komponentMangler = KOMPONENT_TOKENS.some(([n]) => !kart.has(n));
-  const mangler = nodvendigeTokens().filter((n) => !kart.has(n) && !KOMPONENT_TOKENS.some(([k]) => k === n));
+  const mangler = NOKKELTOKENS.filter((n) => !kart.has(n));
   if (mangler.length) {
-    return { ok: false, melding: `Mangler ${mangler.length} tokens, f.eks. ${mangler.slice(0, 3).join(', ')}. Importer siste penpot-tokens.json.` };
+    return { ok: false, melding: `Mangler tokens som ${mangler.slice(0, 3).join(', ')}. Importer siste penpot-tokens.json.` };
   }
-  const uloste = nodvendigeTokens().filter((n) => kart.has(n) && kart.get(n).resolvedValueString === undefined);
-  if (uloste.length) {
-    return {
-      ok: false,
-      melding: 'Noen tokens peker til sett som ikke er aktive. Slå på temaene Grunnlag/Standard, Palett/Dag og Størrelse/Regular.',
-    };
+  if (NOKKELTOKENS.some((n) => kart.get(n).resolvedValueString === undefined)) {
+    return { ok: false, melding: 'Noen tokens peker til sett som ikke er aktive. Slå på temaene Grunnlag/Standard, Palett/Dag og Størrelse/Regular.' };
   }
-  return { ok: true, komponentMangler, melding: komponentMangler ? 'Klar. Komponent-tokens blir lagt til automatisk.' : 'Klar.' };
+  const komponentMangler = KOMPONENT_TOKENS.filter(([n]) => !kart.has(n)).length;
+  return {
+    ok: true,
+    komponentMangler,
+    melding: komponentMangler ? `Klar. ${komponentMangler} komponent-tokens blir lagt til automatisk.` : 'Klar.',
+  };
 }
 
-/** Oppretter settet «semantikk/komponent» hvis det mangler, og slår det på. */
+/** Oppretter manglende komponent-tokens i «semantikk/komponent» og slår settet på. */
 async function sikreKomponentTokens() {
   const katalog = penpot.library.local.tokens;
   let sett = katalog.sets.find((s) => s.name === KOMPONENT_SETT);
@@ -118,203 +125,498 @@ async function sikreKomponentTokens() {
   }
   if (!sett.active) sett.active = true;
   const finnes = new Set(sett.tokens.map((t) => t.name));
+  let lagt = 0;
   for (const [name, type, value] of KOMPONENT_TOKENS) {
     if (finnes.has(name)) continue;
     const t = sett.addToken({ type, name, value });
-    if (!t) logg(`Kunne ikke lage token ${name}`, 'feil');
+    if (t) lagt++;
+    else logg(`Kunne ikke lage token ${name}`, 'feil');
   }
-  // Legg settet til i temaet Grunnlag/Standard, så det følger med når temaer byttes
+  if (lagt) logg(`La til ${lagt} komponent-tokens`);
   const grunnlag = katalog.themes.find((t) => t.group === 'Grunnlag' && t.name === 'Standard');
   if (grunnlag && !grunnlag.activeSets.some((s) => s.name === KOMPONENT_SETT)) grunnlag.addSet(sett);
   await vent(300);
 }
 
-/** Binder et token til en eller flere egenskaper på en figur. */
-function bind(figur, tokenNavn, egenskaper, kart, feil) {
-  const token = kart.get(tokenNavn);
-  if (!token) {
-    feil.push(tokenNavn);
-    return;
-  }
-  try {
-    figur.applyToken(token, egenskaper);
-  } catch (e) {
-    feil.push(`${tokenNavn} → ${egenskaper.join(',')}: ${e.message ?? e}`);
-  }
-}
+/** Byggeverktøy som samler token-feil underveis. */
+function lagVerktoy(kart) {
+  const feil = [];
+  const flexFor = new Map(); // board.id → FlexLayout (Penpot-objektene tåler ikke egne felt)
 
-function flex(board, { dir = 'row', sizingH = 'auto', sizingV = 'auto' } = {}) {
-  const f = board.addFlexLayout();
-  f.dir = dir;
-  f.alignItems = 'center';
-  f.justifyContent = 'center';
-  f.horizontalSizing = sizingH;
-  f.verticalSizing = sizingV;
-  return f;
-}
-
-function nyBoard(navn, b = 48, h = 48) {
-  const board = penpot.createBoard();
-  board.name = navn;
-  board.resize(b, h);
-  board.fills = [];
-  return board;
-}
-
-// ------------------------------------------------------------------ knapp
-function lagKnapp(v, t, inn, kart, feil) {
-  const S = `color.control.${v.id}`;
-  const deaktivert = t.id === 'disabled';
-  const fokus = t.id === 'focused';
-
-  // Ytterste lag: usynlig berøringsflate (OpenBridge .wrapper)
-  const wrapper = nyBoard(`Knapp / ${v.navn} / ${t.navn} / ${inn.navn}`, 96, 48);
-  const fw = flex(wrapper, { sizingH: 'auto', sizingV: 'fix' });
-  bind(wrapper, 'button.height', ['height'], kart, feil);
-
-  // Synlig flate (OpenBridge .visible-wrapper)
-  const flate = nyBoard('Flate', 80, 32);
-  const ff = flex(flate, { sizingH: 'auto', sizingV: 'fix' });
-  flate.strokes = [{ strokeColor: '#000000', strokeOpacity: 1, strokeWidth: 1, strokeStyle: 'solid', strokeAlignment: fokus ? 'outer' : 'inner' }];
-  bind(flate, 'button.visual-height', ['height'], kart, feil);
-  bind(flate, 'button.padding-inline', ['paddingLeft', 'paddingRight'], kart, feil);
-  bind(flate, 'button.border-radius', ['borderRadiusTopLeft', 'borderRadiusTopRight', 'borderRadiusBottomRight', 'borderRadiusBottomLeft'], kart, feil);
-  bind(flate, `${S}.${t.id}-background`, ['fill'], kart, feil);
-  if (fokus) {
-    // OpenBridge: 2px fokusramme i border-focus utenfor flaten
-    bind(flate, 'color.focus.inner', ['strokeColor'], kart, feil);
-    bind(flate, 'focus.width', ['strokeWidth'], kart, feil);
-  } else {
-    bind(flate, `${S}.${t.id}-border`, ['strokeColor'], kart, feil);
-    bind(flate, 'button.border-width', ['strokeWidth'], kart, feil);
+  function bind(figur, tokenNavn, egenskaper) {
+    const token = kart.get(tokenNavn);
+    if (!token) return feil.push(`mangler token ${tokenNavn}`);
+    try {
+      figur.applyToken(token, egenskaper);
+    } catch (e) {
+      feil.push(`${tokenNavn} → ${egenskaper.join(',')}: ${e?.message ?? e}`);
+    }
   }
 
-  // Ikon
-  if (inn.ikon) {
-    const ikon = nyBoard('Ikon', 24, 24);
-    const symbol = penpot.createShapeFromSvg(IKON_SVG);
+  function boks(navn, { dir = 'row', b = 48, h = 48, sizingH = 'auto', sizingV = 'auto', align = 'center', justify = 'center', layout = true } = {}) {
+    const board = penpot.createBoard();
+    board.name = navn;
+    board.resize(b, h);
+    board.fills = [];
+    if (layout) {
+      const f = board.addFlexLayout();
+      f.dir = dir;
+      f.alignItems = align;
+      f.justifyContent = justify;
+      f.horizontalSizing = sizingH;
+      f.verticalSizing = sizingV;
+      flexFor.set(board.id, f);
+    }
+    return board;
+  }
+
+  function leggTil(forelder, barn) {
+    const f = flexFor.get(forelder.id) ?? forelder.flex;
+    if (f && typeof f.appendChild === 'function') f.appendChild(barn);
+    else forelder.appendChild(barn);
+  }
+
+  function strek(figur, { ytre = false } = {}) {
+    figur.strokes = [{ strokeColor: '#000000', strokeOpacity: 1, strokeWidth: 1, strokeStyle: 'solid', strokeAlignment: ytre ? 'outer' : 'inner' }];
+  }
+
+  /** Flate med fyll, strek og radius. Fokus gir OpenBridge sin 2px fokusramme. */
+  function flate(figur, { fyll, kant, kantbredde = 'button.border-width', radius, fokus = false }) {
+    strek(figur, { ytre: fokus });
+    if (fyll) bind(figur, fyll, ['fill']);
+    if (fokus) {
+      bind(figur, 'color.focus.inner', ['strokeColor']);
+      bind(figur, 'focus.width', ['strokeWidth']);
+    } else if (kant) {
+      bind(figur, kant, ['strokeColor']);
+      bind(figur, kantbredde, ['strokeWidth']);
+    }
+    if (radius) bind(figur, radius, ['borderRadiusTopLeft', 'borderRadiusTopRight', 'borderRadiusBottomRight', 'borderRadiusBottomLeft']);
+  }
+
+  function ikon(navn, sti, storrelse, farge) {
+    const ramme = boks(navn, { b: 24, h: 24, layout: false });
+    const symbol = penpot.createShapeFromSvg(svg(sti));
     if (symbol) {
       symbol.name = 'Symbol';
-      ikon.appendChild(symbol);
-      symbol.x = ikon.x;
-      symbol.y = ikon.y;
+      ramme.appendChild(symbol);
+      symbol.x = ramme.x;
+      symbol.y = ramme.y;
       symbol.resize(24, 24);
-      const stier = 'children' in symbol && symbol.children?.length ? symbol.children : [symbol];
-      for (const sti of stier) {
-        sti.constraintsHorizontal = 'scale';
-        sti.constraintsVertical = 'scale';
-        bind(sti, `${S}.${deaktivert ? 'on-disabled' : 'on-neutral'}`, ['fill'], kart, feil);
-      }
       symbol.constraintsHorizontal = 'scale';
       symbol.constraintsVertical = 'scale';
+      const stier = symbol.children?.length ? symbol.children : [symbol];
+      for (const s of stier) {
+        s.constraintsHorizontal = 'scale';
+        s.constraintsVertical = 'scale';
+        bind(s, farge, ['fill']);
+      }
     }
-    bind(ikon, 'button.icon-size', ['width', 'height'], kart, feil);
-    ff.appendChild(ikon);
+    bind(ramme, storrelse, ['width', 'height']);
+    return ramme;
   }
 
-  // Etikett med luft på sidene (OpenBridge .label)
-  const etikett = nyBoard('Etikett', 40, 24);
-  flex(etikett);
-  bind(etikett, 'button.label-padding', ['paddingLeft', 'paddingRight'], kart, feil);
-  const tekst = penpot.createText('Knapp');
-  if (tekst) {
-    tekst.name = 'Tekst';
-    tekst.growType = 'auto-width';
-    bind(tekst, 'typography.ui.button', ['typography'], kart, feil);
-    bind(tekst, `${S}.${deaktivert ? 'on-disabled' : 'on-active'}`, ['fill'], kart, feil);
-    etikett.appendChild(tekst);
+  function tekst(innhold, typografi, farge, navn = 'Tekst') {
+    const t = penpot.createText(innhold);
+    if (!t) {
+      feil.push(`kunne ikke lage tekst «${innhold}»`);
+      return null;
+    }
+    t.name = navn;
+    t.growType = 'auto-width';
+    bind(t, typografi, ['typography']);
+    bind(t, farge, ['fill']);
+    return t;
   }
-  ff.appendChild(etikett);
-  fw.appendChild(flate);
+
+  function sirkel(navn, storrelse, farge) {
+    const e = penpot.createEllipse();
+    e.name = navn;
+    e.resize(12, 12);
+    e.fills = [];
+    bind(e, storrelse, ['width', 'height']);
+    bind(e, farge, ['fill']);
+    return e;
+  }
+
+  function fyllBredde(figur) {
+    if (figur.layoutChild) figur.layoutChild.horizontalSizing = 'fill';
+  }
+
+  return { feil, bind, boks, leggTil, flate, ikon, tekst, sirkel, fyllBredde };
+}
+
+// ================================================================== komponenter
+// Hver komponent: navn, egenskaper og en liste kombinasjoner. Hver kombinasjon
+// har verdier (én per egenskap), plassering i rutenettet og en byggefunksjon.
+
+const KNAPP_VARIANTER = [['normal', 'Normal'], ['raised', 'Raised'], ['flat', 'Flat']];
+const KNAPP_TILSTANDER = ['enabled', 'hover', 'pressed', 'focused', 'disabled', 'activated'];
+const harTilstand = (variant, tilstand) => !(tilstand === 'activated' && variant === 'raised');
+
+const KOMPONENTER = {
+  // ---------------------------------------------------------------- Knapp
+  knapp: {
+    navn: 'Knapp',
+    egenskaper: ['Variant', 'Tilstand', 'Innhold'],
+    kombinasjoner() {
+      const ut = [];
+      let rad = 0;
+      for (const [v, vNavn] of KNAPP_VARIANTER) {
+        for (const [inn, innNavn] of [['tekst', 'Tekst'], ['ikon', 'Ikon og tekst']]) {
+          KNAPP_TILSTANDER.forEach((t, kol) => {
+            if (!harTilstand(v, t)) return;
+            ut.push({ verdier: [vNavn, TILSTAND[t], innNavn], rad, kol, bygg: (V) => byggKnapp(V, v, t, inn === 'ikon') });
+          });
+          rad++;
+        }
+      }
+      return ut;
+    },
+  },
+
+  // ---------------------------------------------------------------- Ikonknapp
+  ikonknapp: {
+    navn: 'Ikonknapp',
+    egenskaper: ['Variant', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      KNAPP_VARIANTER.forEach(([v, vNavn], rad) => {
+        KNAPP_TILSTANDER.forEach((t, kol) => {
+          if (!harTilstand(v, t)) return;
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggIkonknapp(V, v, t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 120,
+  },
+
+  // ---------------------------------------------------------------- Bryter (toggle)
+  bryter: {
+    navn: 'Bryter',
+    egenskaper: ['Verdi', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      [['av', 'Av'], ['pa', 'På']].forEach(([verdi, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggBryter(V, verdi === 'pa', t) });
+        });
+      });
+      return ut;
+    },
+  },
+
+  // ---------------------------------------------------------------- Sjekkboks
+  sjekkboks: {
+    navn: 'Sjekkboks',
+    egenskaper: ['Verdi', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      [['av', 'Av'], ['pa', 'På'], ['delvis', 'Delvis']].forEach(([verdi, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggSjekkboks(V, verdi, t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 160,
+  },
+
+  // ---------------------------------------------------------------- Radioknapp
+  radio: {
+    navn: 'Radioknapp',
+    egenskaper: ['Verdi', 'Tilstand'],
+    kombinasjoner() {
+      const ut = [];
+      [['av', 'Av'], ['pa', 'På']].forEach(([verdi, vNavn], rad) => {
+        KONTROLL_TILSTANDER.forEach((t, kol) => {
+          ut.push({ verdier: [vNavn, TILSTAND[t]], rad, kol, bygg: (V) => byggRadio(V, verdi === 'pa', t) });
+        });
+      });
+      return ut;
+    },
+    kolonne: 160,
+  },
+
+  // ---------------------------------------------------------------- Inputfelt
+  inputfelt: {
+    navn: 'Inputfelt',
+    egenskaper: ['Tilstand', 'Innhold'],
+    kombinasjoner() {
+      const ut = [];
+      [['tom', 'Tom'], ['verdi', 'Utfylt']].forEach(([inn, innNavn], rad) => {
+        [['enabled', 'Hvile'], ['hover', 'Hover'], ['focused', 'Fokus'], ['disabled', 'Deaktivert'], ['feil', 'Feil']].forEach(([t, tNavn], kol) => {
+          ut.push({ verdier: [tNavn, innNavn], rad, kol, bygg: (V) => byggInputfelt(V, t, inn === 'verdi') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 300,
+    radhoyde: 130,
+  },
+
+  // ---------------------------------------------------------------- Alarmbanner
+  alarmbanner: {
+    navn: 'Alarmbanner',
+    egenskaper: ['Alvorlighet', 'Status'],
+    kombinasjoner() {
+      const ut = [];
+      ALVORLIGHET.forEach(([kat, navn], rad) => {
+        [['aktiv', 'Aktiv'], ['kvittert', 'Kvittert']].forEach(([s, sNavn], kol) => {
+          ut.push({ verdier: [navn, sNavn], rad, kol, bygg: (V) => byggAlarmbanner(V, kat, navn, s === 'kvittert') });
+        });
+      });
+      return ut;
+    },
+    kolonne: 420,
+  },
+};
+
+// OpenBridge-alvorlighet → Designsystemet-kategori
+const ALVORLIGHET = [
+  ['critical', 'Kritisk', 'Kritisk feil', 'Styremaskin 1 · ingen respons'],
+  ['danger', 'Alarm', 'Høy temperatur', 'Motor 2 · kjølevann 96 °C'],
+  ['warning', 'Advarsel', 'Lavt nivå', 'Dagtank SB · 18 %'],
+  ['caution', 'Forsiktighet', 'Service forfaller', 'Generator 1 · om 12 t'],
+  ['info', 'Info', 'Ny melding', 'Fra maskinkontroll'],
+];
+
+// ------------------------------------------------------------------ byggere
+function byggKnapp(V, v, t, medIkon) {
+  const S = `color.control.${v}`;
+  const deaktivert = t === 'disabled';
+  const wrapper = V.boks('Knapp', { b: 96, h: 48, sizingV: 'fix' });
+  V.bind(wrapper, 'button.height', ['height']);
+
+  const flate = V.boks('Flate', { b: 80, h: 32, sizingV: 'fix' });
+  V.bind(flate, 'button.visual-height', ['height']);
+  V.bind(flate, 'button.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.flate(flate, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'button.border-radius', fokus: t === 'focused' });
+
+  if (medIkon) V.leggTil(flate, V.ikon('Ikon', IKON.pluss, 'button.icon-size', `${S}.${deaktivert ? 'on-disabled' : 'on-neutral'}`));
+  const etikett = V.boks('Etikett', { b: 40, h: 24 });
+  V.bind(etikett, 'button.label-padding', ['paddingLeft', 'paddingRight']);
+  const txt = V.tekst('Knapp', 'typography.ui.button', `${S}.${deaktivert ? 'on-disabled' : 'on-active'}`);
+  if (txt) V.leggTil(etikett, txt);
+  V.leggTil(flate, etikett);
+  V.leggTil(wrapper, flate);
   return wrapper;
 }
 
-async function genererKnapp() {
+function byggIkonknapp(V, v, t) {
+  const S = `color.control.${v}`;
+  const wrapper = V.boks('Ikonknapp', { b: 48, h: 48, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(wrapper, 'button.height', ['width', 'height']);
+  const flate = V.boks('Flate', { b: 32, h: 32, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(flate, 'icon-button.visual-size', ['width', 'height']);
+  V.flate(flate, { fyll: `${S}.${t}-background`, kant: `${S}.${t}-border`, radius: 'button.border-radius', fokus: t === 'focused' });
+  V.leggTil(flate, V.ikon('Ikon', IKON.meny, 'icon-button.icon-size', `${S}.${t === 'disabled' ? 'on-disabled' : 'on-neutral'}`));
+  V.leggTil(wrapper, flate);
+  return wrapper;
+}
+
+/** Etikett ved siden av en valgkontroll. */
+function kontrollRad(V, navn, kontroll, deaktivert, aktiv = false) {
+  const rad = V.boks(navn, { b: 120, h: 48, sizingV: 'fix', justify: 'start' });
+  V.bind(rad, 'control.height', ['height']);
+  V.bind(rad, 'control.label-spacing', ['columnGap']);
+  V.leggTil(rad, kontroll);
+  const txt = V.tekst('Valg', aktiv ? 'typography.ui.body-active' : 'typography.ui.body', deaktivert ? 'color.neutral.text-disabled' : 'color.neutral.text-default', 'Etikett');
+  if (txt) V.leggTil(rad, txt);
+  return rad;
+}
+
+function byggBryter(V, pa, t) {
+  const deaktivert = t === 'disabled';
+  // OpenBridge: av = indent-flate med element-inactive-kant, på = selected
+  const sett = pa ? 'selected' : 'indent';
+  const spor = V.boks('Spor', { b: 48, h: 24, sizingH: 'fix', sizingV: 'fix', justify: pa ? 'end' : 'start' });
+  V.bind(spor, 'toggle.width', ['width']);
+  V.bind(spor, 'toggle.height', ['height']);
+  V.bind(spor, 'toggle.padding', ['paddingLeft', 'paddingRight']);
+  const kant = !pa && (t === 'enabled' || t === 'hover') ? 'color.neutral.border-strong' : `color.control.${sett}.${t}-border`;
+  V.flate(spor, { fyll: `color.control.${sett}.${t}-background`, kant, radius: 'toggle.border-radius', fokus: t === 'focused' });
+  const knott = pa
+    ? (deaktivert ? 'color.control.selected.on-disabled' : 'color.control.selected.on-active')
+    : (deaktivert ? 'color.neutral.text-disabled' : 'color.neutral.text-subtle');
+  V.leggTil(spor, V.sirkel('Knott', 'toggle.thumb-size', knott));
+  return kontrollRad(V, 'Bryter', spor, deaktivert, pa);
+}
+
+function byggSjekkboks(V, verdi, t) {
+  const deaktivert = t === 'disabled';
+  // OpenBridge: av = indent, på = selected, delvis = amplified
+  const sett = { av: 'indent', pa: 'selected', delvis: 'amplified' }[verdi];
+  const boks = V.boks('Boks', { b: 24, h: 24, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(boks, 'checkbox.size', ['width', 'height']);
+  const kant = verdi === 'av' && !deaktivert ? 'color.neutral.symbol' : `color.control.${sett}.${t}-border`;
+  V.flate(boks, { fyll: `color.control.${sett}.${t}-background`, kant, radius: 'checkbox.border-radius', fokus: t === 'focused' });
+  if (verdi !== 'av') {
+    V.leggTil(boks, V.ikon('Merke', verdi === 'pa' ? IKON.hake : IKON.strek, 'checkbox.size', `color.control.${sett}.${deaktivert ? 'on-disabled' : 'on-active'}`));
+  }
+  return kontrollRad(V, 'Sjekkboks', boks, deaktivert);
+}
+
+function byggRadio(V, pa, t) {
+  const deaktivert = t === 'disabled';
+  const sett = pa ? 'selected' : 'indent';
+  const ring = V.boks('Ring', { b: 24, h: 24, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(ring, 'radio.size', ['width', 'height']);
+  const kant = !pa && !deaktivert ? 'color.neutral.border-strong' : `color.control.${sett}.${t}-border`;
+  V.flate(ring, { fyll: `color.control.${sett}.${t}-background`, kant, radius: 'border-radius.full', fokus: t === 'focused' });
+  if (pa) V.leggTil(ring, V.sirkel('Prikk', 'radio.thumb-size', `color.control.selected.${deaktivert ? 'on-disabled' : 'on-active'}`));
+  return kontrollRad(V, 'Radioknapp', ring, deaktivert, pa);
+}
+
+function byggInputfelt(V, t, utfylt) {
+  const deaktivert = t === 'disabled';
+  const feil = t === 'feil';
+  const tilstand = feil ? 'enabled' : t;
+  const felt = V.boks('Inputfelt', { dir: 'column', b: 240, h: 100, sizingH: 'fix', align: 'start', justify: 'start' });
+  V.bind(felt, 'input.gap', ['rowGap']);
+
+  const etikett = V.tekst('Etikett', 'typography.ui.label', deaktivert ? 'color.neutral.text-disabled' : 'color.neutral.text-subtle', 'Etikett');
+  if (etikett) V.leggTil(felt, etikett);
+
+  const boks = V.boks('Felt', { b: 240, h: 32, sizingH: 'fix', sizingV: 'fix', justify: 'start' });
+  V.bind(boks, 'input.height', ['height']);
+  V.bind(boks, 'input.padding-inline', ['paddingLeft', 'paddingRight']);
+  // OpenBridge: tomt felt har container-bakgrunn til det får fokus
+  const fyll = !utfylt && !deaktivert && t !== 'focused' ? 'color.neutral.background-default' : `color.control.normal.${tilstand}-background`;
+  // OpenBridge: feil gir 2px kant i alert-error i stedet for vanlig kant
+  V.flate(boks, { fyll, kant: feil ? null : `color.control.normal.${tilstand}-border`, radius: 'input.border-radius', fokus: t === 'focused' });
+  if (feil) {
+    // error-outline i stedet for error: OpenBridge sin «error» er nesten usynlig i natt-paletten
+    V.bind(boks, 'color.alert.error-outline', ['strokeColor']);
+    V.bind(boks, 'focus.width', ['strokeWidth']);
+  }
+  const fargeVerdi = deaktivert ? 'color.control.normal.on-disabled' : utfylt ? 'color.control.normal.on-active' : 'color.neutral.text-placeholder';
+  const verdi = V.tekst(utfylt ? '12,5 knop' : 'Skriv inn verdi', 'typography.ui.body', fargeVerdi, 'Verdi');
+  if (verdi) V.leggTil(boks, verdi);
+  V.leggTil(felt, boks);
+  V.fyllBredde(boks);
+
+  const hjelp = V.tekst(feil ? 'Verdien må være mellom 0 og 30' : 'Hjelpetekst', 'typography.ui.label',
+    feil ? 'color.alert.error-outline' : deaktivert ? 'color.neutral.text-disabled' : 'color.neutral.text-subtle', 'Hjelpetekst');
+  if (hjelp) V.leggTil(felt, hjelp);
+  return felt;
+}
+
+function byggAlarmbanner(V, kat, navn, kvittert) {
+  const info = ALVORLIGHET.find(([k]) => k === kat);
+  const C = `color.${kat}`;
+  const banner = V.boks('Alarmbanner', { b: 360, h: 48, sizingH: 'fix', sizingV: 'fix', justify: 'start' });
+  V.bind(banner, 'banner.height', ['height']);
+  V.bind(banner, 'banner.padding-inline', ['paddingLeft', 'paddingRight']);
+  V.bind(banner, 'banner.gap', ['columnGap']);
+  // Aktiv: kant i alvorlighetsfarge. Kvittert: nøytral kant. Merket beholder fargen –
+  // i OpenBridge er forskjellen ellers at ukvitterte alarmer blinker.
+  V.flate(banner, {
+    fyll: 'color.neutral.surface-default',
+    kant: kvittert ? 'color.neutral.border-default' : `${C}.border-default`,
+    kantbredde: kvittert ? 'border-width.default' : 'focus.width',
+    radius: 'banner.border-radius',
+  });
+
+  const merke = V.boks('Merke', { b: 32, h: 32, sizingH: 'fix', sizingV: 'fix' });
+  V.bind(merke, 'banner.badge-size', ['width', 'height']);
+  V.flate(merke, { fyll: `${C}.base-default`, radius: 'border-radius.md' });
+  V.leggTil(merke, V.ikon('Ikon', IKON.utrop, 'banner.icon-size', `${C}.base-contrast-default`));
+  V.leggTil(banner, merke);
+
+  const tekster = V.boks('Tekst', { dir: 'column', b: 200, h: 40, align: 'start', justify: 'center' });
+  const tittel = V.tekst(info[2], 'typography.ui.body-active', 'color.neutral.text-default', 'Tittel');
+  const beskr = V.tekst(info[3], 'typography.ui.label', 'color.neutral.text-subtle', 'Beskrivelse');
+  if (tittel) V.leggTil(tekster, tittel);
+  if (beskr) V.leggTil(tekster, beskr);
+  V.leggTil(banner, tekster);
+  V.fyllBredde(tekster);
+
+  const tid = V.tekst('12:04', 'typography.ui.label', 'color.neutral.text-subtle', 'Tid');
+  if (tid) V.leggTil(banner, tid);
+  return banner;
+}
+
+// ================================================================== generering
+async function generer(id) {
+  const def = KOMPONENTER[id];
+  if (!def) throw new Error(`Ukjent komponent: ${id}`);
   const status = sjekk();
   if (!status.ok) throw new Error(status.melding);
   if (status.komponentMangler) await sikreKomponentTokens();
 
-  const kart = tokenKart();
-  const feil = [];
+  const V = lagVerktoy(tokenKart());
   const side = penpot.currentPage;
-
-  // Plasser til høyre for alt som allerede ligger på siden
   let startX = 0;
-  const startY = 0;
-  for (const s of side.root?.children ?? []) startX = Math.max(startX, s.x + s.width);
+  for (const s of side?.root?.children ?? []) startX = Math.max(startX, s.x + s.width);
   startX = startX ? startX + 200 : 0;
 
-  const KOL = 220;
-  const RAD = 96;
+  const KOL = def.kolonne ?? 220;
+  const RAD = def.radhoyde ?? 96;
   const hoveder = [];
-  const egenskaperFor = new Map();
-  let rad = 0;
-  for (const v of VARIANTER) {
-    for (const inn of INNHOLD) {
-      let kol = 0;
-      for (const t of TILSTANDER) {
-        if (t.kunFor && !t.kunFor.includes(v.id)) {
-          kol++;
-          continue;
-        }
-        const k = lagKnapp(v, t, inn, kart, feil);
-        k.x = startX + kol * KOL;
-        k.y = startY + rad * RAD;
-        // Navnet «Knapp / Variant / Tilstand / Innhold» gir Penpot riktig
-        // beholdernavn («Knapp») når komponentene slås sammen til varianter.
-        penpot.library.local.createComponent([k]);
-        hoveder.push(k);
-        egenskaperFor.set(k.id, [v.navn, t.navn, inn.navn]);
-        kol++;
-      }
-      rad++;
-    }
+  const verdierFor = new Map();
+  for (const k of def.kombinasjoner()) {
+    const figur = k.bygg(V);
+    // Navnet «Komponent / verdi / verdi …» gir riktig beholdernavn ved sammenslåing
+    figur.name = [def.navn, ...k.verdier].join(' / ');
+    figur.x = startX + k.kol * KOL;
+    figur.y = k.rad * RAD;
+    penpot.library.local.createComponent([figur]);
+    hoveder.push(figur);
+    verdierFor.set(figur.id, k.verdier);
   }
-  logg(`Laget ${hoveder.length} knapper`);
+  logg(`${def.navn}: laget ${hoveder.length} varianter`);
   await vent(400);
 
-  // Slå sammen til én komponent med varianter
   const [forste, ...resten] = hoveder;
   const beholder = forste.combineAsVariants(resten.map((h) => h.id));
   await vent(800);
-  if (beholder) beholder.name = 'Knapp';
+  if (beholder) beholder.name = def.navn;
 
   const varianter = beholder?.variants ?? forste.component()?.variants;
-  if (!varianter) throw new Error('Penpot laget ikke variantene. Prøv å kjøre pluginet på nytt på en tom side.');
-  while (varianter.properties.length < EGENSKAPER.length) {
+  if (!varianter) throw new Error(`${def.navn}: Penpot laget ikke variantene. Prøv igjen på en tom side.`);
+  while (varianter.properties.length < def.egenskaper.length) {
     varianter.addProperty();
     await vent(150);
   }
-  EGENSKAPER.forEach((n, i) => varianter.renameProperty(i, n));
+  def.egenskaper.forEach((n, i) => varianter.renameProperty(i, n));
   await vent(200);
-
   for (const h of hoveder) {
     const komp = h.component();
-    if (!komp || !komp.isVariant()) continue;
-    egenskaperFor.get(h.id).forEach((verdi, i) => komp.setVariantProperty(i, verdi));
+    if (komp?.isVariant()) verdierFor.get(h.id).forEach((verdi, i) => komp.setVariantProperty(i, verdi));
   }
   await vent(200);
 
-  if (feil.length) {
-    logg(`${feil.length} token-koblinger feilet:`, 'feil');
-    for (const f of feil.slice(0, 15)) logg(`• ${f}`, 'feil');
+  if (V.feil.length) {
+    logg(`${def.navn}: ${V.feil.length} token-koblinger feilet`, 'feil');
+    for (const f of [...new Set(V.feil)].slice(0, 10)) logg(`• ${f}`, 'feil');
   }
-  penpot.viewport.zoomIntoView(beholder ? [beholder] : hoveder);
-  return { antall: hoveder.length, feil: feil.length };
+  return { navn: def.navn, antall: hoveder.length, feil: V.feil.length, beholder: beholder ?? forste };
 }
 
-// ------------------------------------------------------------------ UI
-penpot.ui.open('Maritimt DS – komponenter', 'index.html', { width: 360, height: 520 });
+// ================================================================== UI
+penpot.ui.open('Maritimt DS – komponenter', 'index.html', { width: 380, height: 640 });
 
 penpot.ui.onMessage(async (melding) => {
   if (!melding || typeof melding !== 'object') return;
   if (melding.type === 'klar') {
-    penpot.ui.sendMessage({ type: 'status', versjon: VERSJON, ...sjekk() });
+    penpot.ui.sendMessage({
+      type: 'status', versjon: VERSJON, ...sjekk(),
+      komponenter: Object.entries(KOMPONENTER).map(([id, d]) => ({ id, navn: d.navn, antall: d.kombinasjoner().length, egenskaper: d.egenskaper })),
+    });
   }
-  if (melding.type === 'generer' && melding.komponent === 'knapp') {
+  if (melding.type === 'generer') {
+    const ider = melding.komponent === 'alle' ? Object.keys(KOMPONENTER) : [melding.komponent];
+    const laget = [];
     try {
-      const r = await genererKnapp();
-      penpot.ui.sendMessage({ type: 'ferdig', ...r });
+      for (const id of ider) {
+        const r = await generer(id);
+        laget.push(r);
+        penpot.ui.sendMessage({ type: 'ferdig', id, navn: r.navn, antall: r.antall, feil: r.feil });
+      }
+      if (laget.length) penpot.viewport.zoomIntoView(laget.map((r) => r.beholder));
+      penpot.ui.sendMessage({ type: 'alt-ferdig' });
     } catch (e) {
       penpot.ui.sendMessage({ type: 'feil', tekst: e?.message ?? String(e) });
     }
