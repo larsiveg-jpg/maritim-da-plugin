@@ -9,6 +9,12 @@ Lager OpenBridge-komponenter i Designsystemet-struktur i Penpot, bundet til desi
    `https://larsiveg-jpg.github.io/maritim-da-plugin/manifest.json` → **Install**.
 3. Åpne pluginet og trykk **Generer** ved komponenten du vil lage.
 
+## Oppdatere pluginet
+
+GitHub Pages lar nettleseren mellomlagre filene i opptil 10 minutter. Hvis Penpot fortsatt viser gammel versjon:
+vent 10 minutter, eller avinstaller pluginet og installer det igjen med et nytt tall på slutten av adressen,
+f.eks. `…/manifest.json?v=2`. Manifestet peker til `plugin.js?v=<versjon>`, så hver ny versjon hentes som en ny fil.
+
 ## Innhold
 
 | Komponent | Varianter | Egenskaper |
