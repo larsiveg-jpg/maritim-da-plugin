@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maritimt DS – komponenter</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1f1f1f; --muted: #6b6b6b; --line: #e3e3e3;
+    --accent: #2d548b; --on-accent: #ffffff; --ok: #2e7d32; --err: #c62828; --card: #f6f6f6;
+  }
+  :root[data-theme="dark"] {
+    --bg: #18191b; --fg: #eeeeee; --muted: #a0a0a0; --line: #2f3033;
+    --accent: #6f9ad6; --on-accent: #0d1a2b; --ok: #81c784; --err: #ef9a9a; --card: #222326;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: var(--bg); color: var(--fg);
+         font: 13px/1.5 "Work Sans", system-ui, sans-serif; }
+  h1 { font-size: 15px; margin: 0 0 2px; }
+  p { margin: 0 0 12px; color: var(--muted); }
+  .status { padding: 10px 12px; border-radius: 6px; background: var(--card); border: 1px solid var(--line); margin-bottom: 12px; }
+  .status.ok { border-color: var(--ok); }
+  .status.feil { border-color: var(--err); }
+  .komp { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+          padding: 10px 0; border-top: 1px solid var(--line); }
+  .komp small { display: block; color: var(--muted); }
+  button { font: inherit; font-weight: 600; border: 0; border-radius: 6px; padding: 8px 14px;
+           background: var(--accent); color: var(--on-accent); cursor: pointer; min-height: 36px; }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  .snart { color: var(--muted); font-size: 12px; }
+  #logg { margin-top: 12px; max-height: 170px; overflow: auto; font-size: 12px; color: var(--muted);
+          border-top: 1px solid var(--line); padding-top: 8px; }
+  #logg .feil { color: var(--err); }
+  #logg .ok { color: var(--ok); }
+</style>
+</head>
+<body>
+  <h1>Maritimt DS – komponenter</h1>
+  <p>OpenBridge-regler, Designsystemet-struktur. Alt bindes til tokens, så palett og størrelse kan byttes etterpå.</p>
+
+  <div id="status" class="status">Sjekker tokens …</div>
+
+  <div class="komp">
+    <div>
+      <strong>Knapp</strong>
+      <small>Normal · Raised · Flat × 6 tilstander × med/uten ikon (34 varianter)</small>
+    </div>
+    <button id="knapp" disabled>Generer</button>
+  </div>
+  <div class="komp">
+    <div><strong>Ikonknapp, toggle, input, sjekkboks …</strong><small>Kommer i neste versjon</small></div>
+    <span class="snart">Snart</span>
+  </div>
+
+  <div id="logg"></div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const params = new URLSearchParams(location.hash.split('?')[1] || location.search);
+  document.documentElement.dataset.theme = params.get('theme') === 'dark' ? 'dark' : 'light';
+
+  function logg(tekst, klasse = '') {
+    const el = document.createElement('div');
+    el.textContent = tekst;
+    if (klasse) el.className = klasse;
+    $('logg').appendChild(el);
+    $('logg').scrollTop = $('logg').scrollHeight;
+  }
+
+  window.addEventListener('message', (e) => {
+    const m = e.data;
+    if (!m || typeof m !== 'object') return;
+    if (m.type === 'tema') document.documentElement.dataset.theme = m.tema === 'dark' ? 'dark' : 'light';
+    if (m.type === 'status') {
+      $('status').textContent = m.melding;
+      $('status').className = 'status ' + (m.ok ? 'ok' : 'feil');
+      $('knapp').disabled = !m.ok;
+    }
+    if (m.type === 'logg') logg(m.tekst, m.nivaa === 'feil' ? 'feil' : '');
+    if (m.type === 'ferdig') {
+      logg(`Ferdig: ${m.antall} varianter laget` + (m.feil ? `, ${m.feil} koblinger feilet` : '.'), m.feil ? 'feil' : 'ok');
+      $('knapp').disabled = false;
+      $('knapp').textContent = 'Generer på nytt';
+    }
+    if (m.type === 'feil') {
+      logg('Feil: ' + m.tekst, 'feil');
+      $('knapp').disabled = false;
+    }
+  });
+
+  $('knapp').addEventListener('click', () => {
+    $('knapp').disabled = true;
+    logg('Genererer knapp …');
+    parent.postMessage({ type: 'generer', komponent: 'knapp' }, '*');
+  });
+
+  parent.postMessage({ type: 'klar' }, '*');
+</script>
+</body>
+</html>
